@@ -1,15 +1,13 @@
-. ~/.zsh/aliases
-
-# changing directory to code project
-function c { cd ~/code/$1; }
-
-# alternative to "rails" command to use templates
-function railsapp {
-  template=$1
-  appname=$2
-  shift 2
-  rails $appname -m http://github.com/ryanb/rails-templates/raw/master/$template.rb $@
-}
-
-# misc
+alias pusht='git push test master'
+alias pushl='git push production master'
+alias pushg='git push github master'
+alias pusho='git push origin master'
+alias undo='git reset --hard HEAD'
+alias gs='git status'
+alias gb='git branch'
+alias gd='git branch -d'
+alias gD='git branch -D'
+alias gl= 'git pull'
+alias gc='git commit -v'
+alias gd='git diff | mate'
 alias reload='. ~/.bash_profile'
