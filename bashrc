@@ -12,3 +12,5 @@ export PROMPT_COMMAND='echo -ne "\033]0;{PWD/#HOME/~}\007"'
 if [ -f ~/.localrc ]; then
   source ~/.localrc
 fi
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
