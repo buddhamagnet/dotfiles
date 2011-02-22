@@ -2,6 +2,7 @@ source ~/.bash/aliases
 source ~/.bash/completions
 source ~/.bash/paths
 source ~/.bash/config
+source ~/.bash/rails
 
 # configure prompt to show branch
 PS1='[\W$(__git_ps1 " (%s)")]\$ '
