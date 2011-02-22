@@ -1,4 +1,11 @@
 .DS_Store
+
+vendor/bundle
+log/*.log
+tmp**/*
+config/database.yml
+db/*.sqlite3
 .svn
 *~
 .*.swp
+EOS
