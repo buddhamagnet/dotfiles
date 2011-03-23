@@ -9,6 +9,8 @@
 	cm = commit
         slog = log --pretty=oneline
         hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+        plog = log -p
+        glog = log --graph
 [core]
         excludesfile = ~/.gitignore
         editor = /bin/vi
