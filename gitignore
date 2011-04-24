@@ -1,6 +1,6 @@
 .DS_Store
-
 vendor/bundle
+vendor/cache
 log/*.log
 tmp**/*
 config/database.yml
