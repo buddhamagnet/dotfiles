@@ -1,18 +1,3 @@
-# GIT
-alias pt='git push test master'
-alias pl='git push production master'
-alias pg='git push github master'
-alias po='git push origin master'
-alias undo='git reset --hard HEAD'
-alias gs='git status'
-alias gb='git branch'
-alias gd='git branch -d'
-alias gD='git branch -D'
-alias gp= 'git pull'
-alias gc='git commit -v'
-alias ga='git add'
-alias gr='git rebase'
-alias gd='git diff | mate'
 # UTILS
 alias reload='. ~/.bash_profile'
 alias svnstrip='find . -name .svn -print0 | xargs -0 rm -rf'
