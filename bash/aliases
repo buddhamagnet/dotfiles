@@ -1,6 +1,7 @@
 # UTILS
 alias reload='. ~/.bash_profile'
 alias svnstrip='find . -name .svn -print0 | xargs -0 rm -rf'
+alias vim='vim -N'
 # RAILS
 alias r='rails'
 alias routeme='rake routes | sed -e "1d" -e "s,^[^/]*,,g" | awk "{print $1}" | sort | uniq'
