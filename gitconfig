@@ -1,33 +1,40 @@
 [user]
+	
 	name = buddhamagnet
 	email = buddhamagnet@gmail.com
+
 [apply]
+	
 	whitespace = nowarn
+
 [alias]
+	
 	co = checkout
 	br = branch
 	cm = commit
-    slog = log --pretty=oneline
-    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-    plog = log -p
-    glog = log --graph
-    undo = reset --hard HEAD
-    s = status
-    b = branch
-    d = branch -d
-    D = branch -D
-    p = pull
-    ps = push
-    rb = rebase
-    m = merge
-    df = diff
-    a = add
-    c = commit
+  slog = log --pretty=oneline
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  plog = log -p
+  glog = log --graph
+  undo = reset --hard HEAD
+  s = status
+  b = branch
+  d = branch -d
+  D = branch -D
+  p = pull
+  ps = push
+  rb = rebase
+  m = merge
+  df = diff
+  a = add
+  c = commit
     
 [core]
-        excludesfile = ~/.gitignore
-        editor = /bin/vi
-        autocrlf = input
-        safecrlf = true
+  
+  excludesfile = ~/.gitignore
+  editor = /usr/bin/vim
+  autocrlf = input
+  safecrlf = true
 [color]
-        ui =auto
+  
+  ui =auto
