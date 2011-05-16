@@ -119,6 +119,16 @@ map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 " Normal mode: <Leader>t
 map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
+" Tab shortcuts, not that I really use them
+map <Leader>tt :tabnew
+map <Leader>tc :tabclose
+map <Leader>to :tabonly
+map <Leader>tn :tabnext
+map <Leader>tp :tabprevious
+map <Leader>tf :tabfirst
+map <Leader>tl :tablast
+map <Leader>tm :tabmove
+
 " Inserts the path of the currently edited file into a command
 " Command mode: Ctrl+P
 cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
