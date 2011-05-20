@@ -121,6 +121,10 @@ map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
 " Tab shortcuts, not that I really use them
 map <Leader>tt :tabnew
+" Show and hide invisibles
+map <Leader>l :set list!<CR>
+" 
+" " Tab shortcuts
 map <Leader>tc :tabclose
 map <Leader>to :tabonly
 map <Leader>tn :tabnext
@@ -156,7 +160,10 @@ imap <Tab> <C-N>
 imap <C-L> <Space>=><Space>
 
 " Display extra whitespace
-" set list listchars=tab:»·,trail:·
+map <Leader>l :set list!<CR>
+set listchars=eol:¬,tab:▸\
+
+
 
 " Edit routes
 command! Rroutes :e config/routes.rb
