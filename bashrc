@@ -1,4 +1,5 @@
 source ~/.bash/aliases
+source ~/.bash/drupal
 source ~/.bash/completions
 source ~/.bash/paths
 source ~/.bash/config
