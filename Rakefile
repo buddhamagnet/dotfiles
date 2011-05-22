@@ -3,9 +3,14 @@ require 'erb'
 
 desc "install the dot files into user's home directory"
 task :install do
+  print "Do you want all the ruby juice?"
+  ruby = $stdin.gets.chomp
   replace_all = false
   Dir['*'].each do |file|
     next if %w[Rakefile README.rdoc LICENSE].include? file
+    if ruby == 'n' || ruby == 'N'
+      next if %w[gemrc irbrc pryrc railsrc rdebugrc rails].include? file
+    end
     
     if File.exist?(File.join(ENV['HOME'], ".#{file.sub('.erb', '')}"))
       if File.identical? file, File.join(ENV['HOME'], ".#{file.sub('.erb', '')}")
