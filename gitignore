@@ -9,3 +9,6 @@ db/*.sqlite3
 *~
 .*.swp
 EOS
+
+sites/default/files
+sites/default/settings.php
