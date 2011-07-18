@@ -2,6 +2,9 @@
 
 alias reload='. ~/.bash_profile'
 
+# remove trailing whitespace OSX
+# find . -name *.*rhtml -exec sed -i "" 's/[ ]*$//' {} \;
+
 # SUBVERSION SURGERY
 
 alias svnstrip='find . -name .svn -print0 | xargs -0 rm -rf'
