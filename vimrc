@@ -38,6 +38,21 @@ set softtabstop=2
 set shiftwidth=2
 set expandtab
 
+if has("autocmd")
+  autocmd BufWritePre *.rb,*.ru,*.php,*.xml,*.erb,*.haml,*.js,*.coffee,*.py,*.module,*.info,*.install,*.inc,*.txt :call <SID>StripTrailingWhitespace()
+endif
+
+" function, shortcut key and on-save autocommand to remove trailing spaces
+nnoremap <silent> <F7> :call <SID>StripTrailingWhitespace()<CR>
+function! <SID>StripTrailingWhitespace()
+  let _s=@/
+  let l= line(".")
+  let c = col(".")
+  %s/\s\+$//e
+  let @/=_s
+  call cursor(l, c)
+endfunction
+
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
   " Enable file type detection.
