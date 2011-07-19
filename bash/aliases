@@ -1,6 +1,7 @@
 # UTILS
 
 alias reload='. ~/.bash_profile'
+alias h='history'
 
 # remove trailing whitespace OSX
 # find . -name *.*rhtml -exec sed -i "" 's/[ ]*$//' {} \;
