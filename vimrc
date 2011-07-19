@@ -12,6 +12,9 @@ set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
@@ -89,6 +92,7 @@ set laststatus=2
 " \ is the leader character
 let mapleader = ","
 
+map <Leader>n :NERDTree
 " Edit the README_FOR_APP (makes :R commands work)
 map <Leader>R :e doc/README_FOR_APP<CR>
 
@@ -163,8 +167,6 @@ imap <C-L> <Space>=><Space>
 " Display extra whitespace
 map <Leader>l :set list!<CR>
 set listchars=eol:¬,tab:▸\
-
-
 
 " Edit routes
 command! Rroutes :e config/routes.rb
