@@ -53,6 +53,9 @@ function! <SID>StripTrailingWhitespace()
   call cursor(l, c)
 endfunction
 
+" strip blank lines
+nnoremap <+> :%g/^$/d:
+
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
   " Enable file type detection.
