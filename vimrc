@@ -43,6 +43,8 @@ if has("autocmd")
   " Set File type to 'text' for files ending in .txt
   autocmd BufNewFile,BufRead *.txt setfiletype text
 
+  autocmd BufNewFile,BufRead *.rss,*.atom setfiletype xml
+
   " Enable soft-wrapping for text files
   autocmd FileType text,markdown,html,xhtml,eruby setlocal wrap linebreak nolist
 
