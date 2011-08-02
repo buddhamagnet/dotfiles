@@ -1,20 +1,9 @@
 # UTILS
 
-alias reload='. ~/.bash_profile'
 alias h='history'
-
-# remove trailing whitespace OSX
-# find . -name *.*rhtml -exec sed -i "" 's/[ ]*$//' {} \;
+alias reload='. ~/.bash_profile'
+alias up='cd ..'
 
 # SUBVERSION SURGERY
 
 alias svnstrip='find . -name .svn -print0 | xargs -0 rm -rf'
-
-# RAILS
-
-alias r='rails'
-alias routeme='rake routes | sed -e "1d" -e "s,^[^/]*,,g" | awk "{print $1}" | sort | uniq'
-
-# RVM
-
-alias getrvm='bash < <(curl -B http://rvm.beginrescueend.com/install/rvm)'
