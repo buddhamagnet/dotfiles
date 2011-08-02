@@ -32,6 +32,10 @@
 .DS_Store
 ehthumbs.db
 Icon
+
+# Windows generated files #
+###########################
+
 Thumbs.db
 
 # Rails cruft #
