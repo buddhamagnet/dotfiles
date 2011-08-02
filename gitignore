@@ -1,14 +1,64 @@
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+
+*.log
+*.sql
+*.sqlite3
+
+# OS generated files #
+######################
+
 .DS_Store
+ehthumbs.db
+Icon
+Thumbs.db
+
+# Rails cruft #
+###############
+
 vendor/bundle
 vendor/cache
 log/*.log
 tmp**/*
 config/database.yml
 db/*.sqlite3
+
+# Version control #
+###################
+
 .svn
+.cvs
+
+# Vim #
+#######
+
 *~
 .*.swp
 EOS
+
+# Drupal configurations #
+#########################
 
 sites/default/files
 sites/default/settings.php
