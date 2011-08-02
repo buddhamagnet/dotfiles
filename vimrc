@@ -54,7 +54,7 @@ function! <SID>StripTrailingWhitespace()
 endfunction
 
 " strip blank lines
-nnoremap <+> :%g/^$/d:
+inoremap <F8> :%g/^$/d<CR>
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
@@ -157,6 +157,12 @@ map <Leader>tp :tabprevious
 map <Leader>tf :tabfirst
 map <Leader>tl :tablast
 map <Leader>tm :tabmove
+
+" Window hopping
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
 
 " Inserts the path of the currently edited file into a command
 " Command mode: Ctrl+P
