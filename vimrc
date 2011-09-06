@@ -113,6 +113,7 @@ set laststatus=2
 let mapleader = ","
 
 map <Leader>n :NERDTree
+map <Leader>t :FuzzyFinderTextMate<Enter>
 " Edit the README_FOR_APP (makes :R commands work)
 map <Leader>R :e doc/README_FOR_APP<CR>
 
@@ -235,6 +236,9 @@ let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 set tags=./tags;
 
 let g:fuf_splitPathMatching=1
+
+" Buffer Explorer configuration - relative paths
+let g:bufExplorerShowRelativePath = 1
 
 " Open URL
 command -bar -nargs=1 OpenURL :!open <args>
