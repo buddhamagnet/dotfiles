@@ -79,11 +79,6 @@ alias ack='ack-grep'
 alias eix="echo 'Szokjal le errol.';apt-cache search"
 alias rsyncssh="rsync -avz --progress -e ssh "
 
-# Amazon
-export EC2_PRIVATE_KEY="~/ec2/pk-2LOZ5XC6TYQK2IANKHKXZKDQ7UPE5J3N.pem"
-export EC2_CERT="~/ec2/cert-2LOZ5XC6TYQK2IANKHKXZKDQ7UPE5J3N.pem"
-export EC2_URL="https://eu-west-1.ec2.amazonaws.com"
-
 alias -g ...='../..'
 alias -g ....='../../..'
 alias -g .....='../../../..'
@@ -96,8 +91,6 @@ setopt no_hup hist_verify
 
 # correcting some keys
 autoload zkbd
-#[[ ! -f ${ZDOTDIR:-$HOME}/.zkbd/$TERM-$VENDOR-$OSTYPE ]] && zkbd
-#source ~/.zkbd/$TERM-${DISPLAY:-$VENDOR-$OSTYPE}
 
 [[ -n ${key[Backspace]} ]] && bindkey "${key[Backspace]}" backward-delete-char
 [[ -n ${key[Insert]} ]] && bindkey "${key[Insert]}" overwrite-mode
@@ -146,13 +139,10 @@ _force_rehash() {
 zstyle ':completion:*' completer \
     _oldlist _expand _force_rehash _complete
 
-
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
-alias gww='cd /Users/coornail/localhost/htdocs/'
-
 
 ac() { # compress a file or folder
   case "$1" in
@@ -281,14 +271,6 @@ PS1="$PR_GREEN%n@%m%u$PR_NO_COLOR:$PR_BLUE%~$PR_NO_COLOR%(!.#.$) "
 PROMPT='%{$PR_GREEN%}%n@%m%u%{$PR_NO_COLOR%}:%{$PR_BLUE%}%~`git-prompt`%{$reset_color%}%(!.#.$) '
 #RPS1=""
 
-
-# mplayer hack
-compdef _files -g \
- "*.(#i)(asf|asx|avi|flac|flv|m1v|m2p|m2v|mjpg|mka|mkv|mov|mp3|mp4|mpe|mpeg|mpg|ogg|ogm|qt|rm|vob|wav|wma|wmv)(-.)" mplayer
-
-#okular is not working either...
-compdef _files -g "*.(#i)pdf(-.)" okular
-
 # I don't use it most of the time
 export no_git_prompt=true
 
@@ -298,24 +280,15 @@ translate() {
   return 0;
 }
 
-unset http_proxy
-
-#PATH=$PATH:/var/lib/gems/1.8/bin/
-
 export SLASHEMOPTIONS="boulder:0, color, autodig, !cmdassist, norest_on_space, showexp"
 
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 zstyle ':completion:*' list-colors 'ExFxCxDxBxegedabagacad'
 
-
 # macports
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export PATH=$PATH:/Applications/MAMP/Library/bin/
 export MANPATH=/opt/local/share/man:$MANPATH
-
-#node.js
-export NODE_PATH="/usr/local/lib/node"
-export PATH=$PATH:~/.npm/less/1.1.2/package/bin/
 
 export ECO="lp:~economist-magic/economist-magic"
