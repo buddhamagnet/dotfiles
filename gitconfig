@@ -38,3 +38,5 @@
 [color]
   
   ui =auto
+[push]
+	default = tracking
