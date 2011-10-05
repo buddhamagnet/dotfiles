@@ -10,7 +10,7 @@ set nowritebackup
 set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
-set incsearch		" do incremental searching
+set hlsearch		" do incremental searching
 
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
