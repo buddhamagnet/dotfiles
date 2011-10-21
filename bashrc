@@ -10,6 +10,7 @@ source ~/.bash/thisgig
 # configure prompt to show branch
 PS1='[\W$(__git_ps1 " (%s)")]\$ '
 export PROMPT_COMMAND='echo -ne "\033]0;{PWD/#HOME/~}\007"'
+export EDITOR='usr/bin/vim'
 
 # use .localrc for settings specific to one system
 if [ -f ~/.localrc ]; then
