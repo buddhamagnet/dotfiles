@@ -3,6 +3,7 @@
 alias h='history'
 alias reload='. ~/.bash_profile'
 alias up='cd ..'
+alias f='foreman start'
 
 # SUBVERSION SURGERY
 
