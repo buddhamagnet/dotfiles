@@ -16,7 +16,7 @@
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   plog = log -p
   glog = log --graph
-  last = git log -1 HEAD
+  last = log -1 HEAD
   unstage = reset HEAD --
   s = status
   b = branch
