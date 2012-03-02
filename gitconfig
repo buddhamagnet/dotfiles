@@ -9,26 +9,12 @@
 
 [alias]
 	
-	co = checkout
-	br = branch
-	cm = commit
   slog = log --pretty=oneline
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   plog = log -p
   glog = log --graph
   last = log -1 HEAD
   unstage = reset HEAD --
-  s = status
-  b = branch
-  d = branch -d
-  D = branch -D
-  p = pull
-  ps = push
-  rb = rebase
-  m = merge
-  df = diff
-  a = add
-  c = commit
     
 [core]
   
@@ -36,8 +22,11 @@
   editor = /usr/bin/vim
   autocrlf = input
   safecrlf = true
+
 [color]
   
   ui =auto
+
 [push]
+
 	default = tracking
