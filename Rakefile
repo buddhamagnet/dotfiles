@@ -7,9 +7,6 @@ task :install do
   print "Do you want all the ruby juice?"  
   ruby = $stdin.gets.chomp
   
-  print "Do you want the drupal power tools?"
-  drupal = $stdin.gets.chomp
-  
   replace_all = false
   
   Dir['*'].each do |file|
@@ -17,10 +14,6 @@ task :install do
     
     if ruby == 'n' || ruby == 'N'
       next if %w[gemrc irbrc pryrc railsrc rdebugrc rails ruby rake_completion].include? file
-    end
-    
-    if drupal == 'n' || drupal == 'N'
-      next if %w[drupal drupal.vim drushrc].include? file
     end
     
     if File.exist?(File.join(ENV['HOME'], ".#{file.sub('.erb', '')}"))
