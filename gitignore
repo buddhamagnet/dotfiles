@@ -61,8 +61,6 @@ db/*.sqlite3
 .*.swp
 EOS
 
-# Drupal configurations #
-#########################
+# CTAGS #
 
-sites/default/files
-sites/default/settings.php
+tags
