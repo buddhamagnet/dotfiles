@@ -1,12 +1,1 @@
-function r3 {
-  template=$1
-  appname=$2
-  shift 2
-  rails new $appname -m http://github.com/buddhamagnet/buddhaplate/blob/master/$template.rb $@
-}
 
-# RAILS ALIASES
-
-alias r='rails'
-alias routeme='rake routes | sed -e "1d" -e "s,^[^/]*,,g" | awk "{print $1}" | sort | uniq'
-alias rpry='pry -r ./config/environment'
