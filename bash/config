@@ -1,3 +1,0 @@
-export PS1="\w$ "
-export EDITOR="/usr/bin/env vim"
-export BUNDLER_EDITOR="/usr/bin/env vim"

@@ -1,3 +1,0 @@
-# RVM
-
-alias getrvm='bash < <(curl -B http://rvm.beginrescueend.com/install/rvm)'
