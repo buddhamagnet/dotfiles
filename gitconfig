@@ -15,13 +15,23 @@
   glog = log --graph
   last = log -1 HEAD
   unstage = reset HEAD --
-    
+  last = log -1
+  st = status
+  co = checkout
+  br = branch
+  re = remote
+  ls = ls-files
+  mg = merge
+  rb = rebase
+  pu = push
+  pl = pull
+  ft = fetch
+  cm = commit
+  
 [core]
   
   excludesfile = ~/.gitignore
   editor = /usr/bin/env vim
-  autocrlf = input
-  safecrlf = true
 
 [color]
   
