@@ -1,32 +1,32 @@
 [user]
-	
-	name = buddhamagnet
-	email = buddhamagnet@gmail.com
+
+  name = buddhamagnet
+  email = buddhamagnet@gmail.com
 
 [apply]
-	
-	whitespace = nowarn
+
+  whitespace = nowarn
 
 [alias]
-	
-  slog = log --pretty=oneline
-  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-  plog = log -p
-  glog = log --graph
-  last = log -1 HEAD
-  unstage = reset HEAD --
-  last = log -1
-  st = status
-  co = checkout
+  
   br = branch
-  re = remote
+  cm = commit
+  co = checkout
+  df = diff
+  ft = fetch
+  glog = log --graph
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  last = log -1 HEAD
   ls = ls-files
   mg = merge
-  rb = rebase
-  pu = push
   pl = pull
-  ft = fetch
-  cm = commit
+  plog = log -p
+  pu = push
+  re = remote
+  rb = rebase
+  slog = log --pretty=oneline
+  st = status
+  unstage = reset HEAD --
   
 [core]
   
@@ -39,4 +39,4 @@
 
 [push]
 
-	default = tracking
+  default = tracking
