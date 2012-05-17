@@ -11,21 +11,37 @@
   
   br = branch
   cm = commit
+  ca = commit --amend
   co = checkout
+  cm = commit -v
   df = diff
+  ds = diff --staged
   ft = fetch
-  glog = log --graph
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   last = log -1 HEAD
   ls = ls-files
+  logg = log --graph
+  logp = log -p
+  logs = log --pretty=oneline
   mg = merge
   pl = pull
-  plog = log -p
   pu = push
   re = remote
+  rea = remote add
+  rem = remote rm
+  ren = remote rename
+  res = remote show
+  rev = remote -v
   rb = rebase
-  slog = log --pretty=oneline
+  rh = reset HEAD
+  rmc = rm --cached
+  sh = show
   st = status
+  t = tag
+  ta = tag -a
+  tl = tag -l
+  ts = tag -s
+  tv = tag -v
   unstage = reset HEAD --
   
 [core]
