@@ -43,6 +43,7 @@
   ts = tag -s
   tv = tag -v
   unstage = reset HEAD --
+  premerge = reset --hard ORIG_HEAD
   
 [core]
   
