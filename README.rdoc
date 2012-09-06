@@ -3,7 +3,14 @@
   git clone git://github.com/buddhamagnet/dotfiles ~/.dotfiles
   cd ~/.dotfiles
   rake install
+  install oh-my-zsh using alias in .localrc file
+  install janus vim distribution
 
 == Features
 
 A port of Ryan Bate's dotfiles repo tuned to the buddhaverse.
+
+Works in tandem with oh-my-zsh and the janus vim distribution.
+
+The zshrc file in this repo is customised for oh-my-zsh and vim
+customisation is contained in the vimrc-before and vimrc-after files.
