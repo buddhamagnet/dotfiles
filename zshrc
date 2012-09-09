@@ -8,8 +8,11 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias zshconfig="mate ~/.zshrc"
+alias ohmyzsh="mate ~/.oh-my-zsh"
+alias hub='curl http://defunkt.io/hub/standalone -sLo ~/bin/hub && chmod +x ~/bin/hub'
+
+eval "$(hub alias -s)"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
