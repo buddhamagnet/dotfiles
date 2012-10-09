@@ -34,6 +34,10 @@ DISABLE_AUTO_TITLE="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git)
 plugins=(bundle)
+plugins=(brew)
+plugins=(github)
+plugins=(heroku)
+plugins=(yum)
 
 source $ZSH/oh-my-zsh.sh
 
