@@ -45,6 +45,10 @@
   unstage = reset HEAD --
   premerge = reset --hard ORIG_HEAD
   
+[branch]
+
+  autosetuprebase = always
+  
 [core]
   
   excludesfile = ~/.gitignore
@@ -52,7 +56,7 @@
 
 [color]
   
-  ui =auto
+  ui = auto
 
 [push]
 
