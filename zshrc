@@ -2,14 +2,12 @@
 ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
 
-# Example aliases
-alias zshconfig="mate ~/.zshrc"
-alias ohmyzsh="mate ~/.oh-my-zsh"
+alias getj="curl -Lo- https://bit.ly/janus-bootstrap | bash"
+alias geto="curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh"
+alias zconf="vim ~/.zshrc"
+alias ohmy="vim ~/.oh-my-zsh"
 alias hub='curl http://defunkt.io/hub/standalone -sLo ~/bin/hub && chmod +x ~/bin/hub'
 
 eval "$(hub alias -s)"
@@ -31,7 +29,7 @@ DISABLE_AUTO_TITLE="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
+
 plugins=(gem git bundler brew github heroku yum)
 
 source $ZSH/oh-my-zsh.sh
@@ -39,4 +37,5 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/X11/bin:/Users/buddhamagnet/.rvm/gems/ruby-1.9.2-p290@rails3tutorial/bin:/Users/buddhamagnet/.rvm/gems/ruby-1.9.2-p290@global/bin:/Users/buddhamagnet/.rvm/rubies/ruby-1.9.2-p290/bin:/Users/buddhamagnet/.rvm/bin:~/bin:~/.bin:/usr/local/homebrew/bin:/usr/local/sbin
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
+# rvm
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
