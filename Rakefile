@@ -1,19 +1,32 @@
 require 'rake'
 require 'erb'
 
+FILES_DOC = %w[Rakefile README.rdoc LICENSE]
+DOMAINS = %w[ruby vim git]
+FILES_RUBY = %w[gemrc irbrc pryrc railsrc rdebugrc rails ruby rake_completion]
+FILES_VIM = %w[vimrc.before vimrc.after gvimrc.after]
+FILES_GIT = %w[gitconfig gitignore gitk]
+
 desc "install the dot files into user's home directory"
 task :install do
   
-  print "Do you want all the ruby juice?"  
-  ruby = $stdin.gets.chomp
+  DOMAINS.each do |domain|
+    puts "Do you want the #{domain} juice?"
+    value = $stdin.gets.chomp
+    instance_variable_set("@#{domain}", value)
+  end
   
   replace_all = false
   
   Dir['*'].each do |file|
-    next if %w[Rakefile README.rdoc LICENSE].include? file
+    next if FILES_DOC.include? file
     
-    if ruby == 'n' || ruby == 'N'
-      next if %w[gemrc irbrc pryrc railsrc rdebugrc rails ruby rake_completion].include? file
+    DOMAINS.each do |domain|
+      value = instance_variable_get("@#{domain}")
+      puts "processing value for #{domain}: #{value}"
+      if value == 'n' || value == 'N'
+        next if Kernel.const_get("FILES_#{domain.upcase}").include? file      
+      end
     end
     
     if File.exist?(File.join(ENV['HOME'], ".#{file.sub('.erb', '')}"))
