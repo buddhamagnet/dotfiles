@@ -34,6 +34,9 @@ plugins=(gem git bundler brew github heroku yum)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
+
+export RI="--format ansi --width 70"
+
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/X11/bin:/Users/buddhamagnet/.rvm/gems/ruby-1.9.2-p290@rails3tutorial/bin:/Users/buddhamagnet/.rvm/gems/ruby-1.9.2-p290@global/bin:/Users/buddhamagnet/.rvm/rubies/ruby-1.9.2-p290/bin:/Users/buddhamagnet/.rvm/bin:~/bin:~/.bin:/usr/local/homebrew/bin:/usr/local/sbin
 
 # rvm
