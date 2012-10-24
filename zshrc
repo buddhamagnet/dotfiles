@@ -10,6 +10,7 @@ alias getr="curl -L https://get.rvm.io | bash -s stable"
 alias geth="curl http://defunkt.io/hub/standalone -sLo ~/bin/hub && chmod +x ~/bin/hub"
 alias zconf="vim ~/.zshrc"
 alias ohmy="vim ~/.oh-my-zsh"
+alias upj="export JRUBY_OPTS=--1.9"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
