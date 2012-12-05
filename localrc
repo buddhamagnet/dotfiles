@@ -1,9 +1,0 @@
-alias bu='bzr update'
-alias bi='bzr info'
-alias bs='bzr switch'
-alias ec='cd /var/www/html/trunk/drupal'
-function rsa() {
-  export ANON_PASSWORD="QW#ER&49c"
-  /var/www/html/integration/selenium/run-selenium.php "$@" /tmp/seleniumresults http://vm.economist.com mymac 4444
-}
-
