@@ -52,7 +52,7 @@
 [core]
   
   excludesfile = ~/.gitignore
-  editor = /usr/bin/env vim
+  editor = /usr/bin/subl
 
 [color]
   
