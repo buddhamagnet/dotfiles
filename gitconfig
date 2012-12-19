@@ -47,8 +47,6 @@
   
 [branch]
 
-  autosetuprebase = always
-  
 [core]
   
   excludesfile = ~/.gitignore
