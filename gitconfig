@@ -1,7 +1,7 @@
 [user]
 
-  name = buddhamagnet
-  email = buddhamagnet@gmail.com
+	name = buddhamagnet
+	email = buddhamagnet@gmail.com
 
 [apply]
 
@@ -52,7 +52,7 @@
 [core]
   
   excludesfile = ~/.gitignore
-  editor = /usr/bin/subl
+  editor = /usr/bin/env vim
 
 [color]
   
@@ -61,3 +61,5 @@
 [push]
 
   default = tracking
+[mergetool]
+	keepBackup = true
