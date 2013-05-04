@@ -2,9 +2,8 @@ require 'rake'
 require 'erb'
 
 FILES_DOC = %w[Rakefile README.rdoc LICENSE]
-DOMAINS = %w[ruby vim git]
-FILES_RUBY = %w[gemrc irbrc pryrc railsrc rdebugrc rails ruby rake_completion]
-FILES_VIM = %w[vimrc.before vimrc.after gvimrc.after]
+DOMAINS = %w[ruby git]
+FILES_RUBY = %w[gemrc irbrc pryrc railsrc rdebugrc rails ruby rake_completion popme]
 FILES_GIT = %w[gitconfig gitignore gitk]
 
 desc "install the dot files into user's home directory"
