@@ -35,3 +35,6 @@ plugins=(gem git bundler brew github heroku yum)
 source $ZSH/oh-my-zsh.sh
 [[ -f ~/.zshrc-local ]] && . ~/.zshrc-local
 [[ -f ~/.localrc ]] && . ~/.localrc
+
+export GOROOT=/usr/local/go/bin
+export GOPATH=$HOME/Code/OSS/golang
