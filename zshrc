@@ -4,7 +4,6 @@ ZSH=$HOME/.oh-my-zsh
 # Set name of the theme to load.
 ZSH_THEME="robbyrussell"
 
-alias getj="curl -Lo- https://bit.ly/janus-bootstrap | bash"
 alias geto="curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh"
 alias getr="curl -L https://get.rvm.io | bash -s stable"
 alias geth="curl http://defunkt.io/hub/standalone -sLo ~/bin/hub && chmod +x ~/bin/hub"
