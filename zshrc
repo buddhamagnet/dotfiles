@@ -37,3 +37,4 @@ source $ZSH/oh-my-zsh.sh
 
 export GOROOT=/usr/local/go/bin
 export GOPATH=$HOME/Code/OSS/golang
+export PATH=$PATH:$GOPATH/bin
