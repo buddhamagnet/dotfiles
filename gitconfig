@@ -1,7 +1,7 @@
 [user]
 
-  name = buddhamagnet
-  email = buddhamagnet@gmail.com
+	name = buddhamagnet
+	email = buddhamagnet@gmail.com
 
 [apply]
 
@@ -45,8 +45,6 @@
   unstage = reset HEAD --
   premerge = reset --hard ORIG_HEAD
   
-[branch]
-
 [core]
   
   excludesfile = ~/.gitignore
@@ -59,3 +57,5 @@
 [push]
 
   default = tracking
+[mergetool]
+	keepBackup = true
