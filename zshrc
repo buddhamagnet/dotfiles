@@ -2,7 +2,7 @@
 ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
-ZSH_THEME="robbyrussell"
+ZSH_THEME="vaicine"
 
 alias geto="curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh"
 alias getr="curl -L https://get.rvm.io | bash -s stable"
