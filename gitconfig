@@ -8,7 +8,7 @@
   whitespace = nowarn
 
 [alias]
-  
+
   br = branch
   cm = commit
   ca = commit --amend
@@ -23,6 +23,7 @@
   logg = log --graph
   logp = log -p
   logs = log --pretty=oneline
+  logr = log -g
   mg = merge
   pl = pull
   pu = push
@@ -44,14 +45,14 @@
   tv = tag -v
   unstage = reset HEAD --
   premerge = reset --hard ORIG_HEAD
-  
+
 [core]
-  
+
   excludesfile = ~/.gitignore
   editor = /usr/bin/env vim
 
 [color]
-  
+
   ui = auto
 
 [push]
