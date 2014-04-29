@@ -37,5 +37,5 @@ source $ZSH/oh-my-zsh.sh
 [[ -f ~/.localrc ]] && . ~/.localrc
 
 export GOROOT=/usr/local/go
-export GOPATH=$HOME/Code/OSS/golang
+export GOPATH=$HOME/golang
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
