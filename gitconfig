@@ -51,6 +51,10 @@
   excludesfile = ~/.gitignore
   editor = /usr/bin/env vim
 
+[commit]
+
+  template = ~/.gitcommit.txt
+
 [color]
 
   ui = auto
