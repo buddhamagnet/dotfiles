@@ -57,7 +57,7 @@
 
 [color]
 
-  ui = auto
+  ui = true
 
 [push]
 
