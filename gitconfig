@@ -1,7 +1,7 @@
 [user]
 
-	name = buddhamagnet
-	email = buddhamagnet@gmail.com
+  name = buddhamagnet
+  email = buddhamagnet@gmail.com
 
 [apply]
 
@@ -59,4 +59,4 @@
 
   default = tracking
 [mergetool]
-	keepBackup = true
+  keepBackup = true
