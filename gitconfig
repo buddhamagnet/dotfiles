@@ -30,7 +30,7 @@
   re = remote
   rea = remote add
   rem = remote rm
-  ren = remote rename
+  ren = remote renames
   res = remote show
   rev = remote -v
   rb = rebase
@@ -50,6 +50,7 @@
 
   excludesfile = ~/.gitignore
   editor = /usr/bin/env vim
+  autocrlf = input
 
 [commit]
 
@@ -62,7 +63,9 @@
 [push]
 
   default = tracking
+
 [mergetool]
+
   keepBackup = true
 
 [help]
