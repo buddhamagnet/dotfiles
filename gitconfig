@@ -64,3 +64,7 @@
   default = tracking
 [mergetool]
   keepBackup = true
+
+[help]
+
+  autocorrect = 1
