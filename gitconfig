@@ -5,7 +5,7 @@
 
 [apply]
 
-  whitespace = nowarn
+  whitespace = warn
 
 [alias]
 
