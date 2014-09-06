@@ -5,6 +5,7 @@ FILES_DOC = %w[Rakefile README.rdoc LICENSE]
 DOMAINS = %w[ruby git]
 FILES_RUBY = %w[gemrc irbrc pryrc railsrc rdebugrc rails ruby rake_completion popme]
 FILES_GIT = %w[gitconfig gitignore gitk gitcommit]
+FILES_TMUX = %[tmuxrc]
 
 desc "install the dot files into user's home directory"
 task :install do
@@ -23,7 +24,7 @@ task :install do
     DOMAINS.each do |domain|
       value = instance_variable_get("@#{domain}")
       puts "processing value for #{domain}: #{value}"
-      if value == 'n' || value == 'N'
+      if value.downcase == 'n'
         next if Kernel.const_get("FILES_#{domain.upcase}").include? file
       end
     end
