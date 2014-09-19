@@ -5,7 +5,7 @@ FILES_DOC = %w[Rakefile README.rdoc LICENSE]
 DOMAINS = %w[ruby git]
 FILES_RUBY = %w[gemrc irbrc pryrc railsrc rdebugrc rails ruby rake_completion popme]
 FILES_GIT = %w[gitconfig gitignore gitk gitcommit]
-FILES_TMUX = %[tmuxrc]
+FILES_TMUX = %[tmux.conf]
 
 desc "install the dot files into user's home directory"
 task :install do
