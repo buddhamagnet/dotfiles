@@ -39,3 +39,10 @@ source $ZSH/oh-my-zsh.sh
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/golang
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
+alias rs='export ANON_PASSWORD="QW#ER&49c" && /var/www/integration/selenium/run-selenium.php ./tmp/seleniumresults http://vm.economist.com mymac 4444'
+
+function rsa() {
+  export ANON_PASSWORD="QW#ER&49c"
+  /var/www/integration/selenium/run-selenium.php "$@" /tmp/seleniumresults http://vm.economist.com mymac 4444
+}
