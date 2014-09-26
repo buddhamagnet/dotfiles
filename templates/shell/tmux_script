@@ -1,0 +1,26 @@
+tmux has-session -t development
+if [ $? != 0 ]
+then
+  tmux new-session -s development -n DEV -d
+  tmux send-keys -t development 'cd /Users/buddhamagnet/Sites/current' C-m
+  tmux send-keys -t development 'ls -lpa' C-m
+  tmux send-keys -t development 'subl -a .'
+  tmux split-window -v -t development
+  tmux select-layout -t development main-horizontal
+  tmux send-keys -t development:0.1 '/Users/buddhamagnet/Sites/current' C-m
+  tmux send-keys -t development:0.1 'rake' C-m
+  tmux new-window -n LOGS -t development
+  tmux send-keys -t development:1 'cd /Users/buddhamagnet/Sites/current' C-m
+  tmux send-keys -t development:1 'tail -f logs/development.log' C-m
+  tmux new-window -n CONSOLE -t development
+  tmux send-keys -t development:2 'cd /Users/buddhamagnet/Sites/current' C-m
+  tmux send-keys -t development:2 'rails c' C-m
+  tmux new-window -n SERVER -t development
+  tmux send-keys -t development:3 'cd /Users/buddhamagnet/Sites/current' C-m
+  tmux send-keys -t development:3 'rails s' C-m
+  tmux new-window -n BD -t development
+  tmux send-keys -t development:4 'cd /Users/buddhamagnet/Sites/current' C-m
+  tmux send-keys -t development:4 'rails db' C-m
+  tmux select-window -t development:0
+fi
+tmux attach -t development
