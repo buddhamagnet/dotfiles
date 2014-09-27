@@ -2,7 +2,7 @@
 ZSH=$HOME/.oh-my-zsh
 
 # set name of the theme to load.
-ZSH_THEME="vaicine"
+ZSH_THEME="muse"
 
 # oh-my-zsh
 alias geto="curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh"
