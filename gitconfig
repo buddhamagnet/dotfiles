@@ -50,7 +50,6 @@
 
   excludesfile = ~/.gitignore
   editor = /usr/bin/env vim
-  autocrlf = input
 
 [commit]
 
