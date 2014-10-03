@@ -2,15 +2,12 @@
 ZSH=$HOME/.oh-my-zsh
 
 # set name of the theme to load.
-ZSH_THEME="vaicine"
+ZSH_THEME="muse"
 
 # oh-my-zsh
 alias geto="curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh"
 alias zconf="vim ~/.zshrc"
 alias ohmy="vim ~/.oh-my-zsh"
-
-# ruby and rails
-alias dub="bin/rake db:migrate && bin/rake db:test:prepare"
 
 # set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -30,14 +27,10 @@ DISABLE_AUTO_TITLE="true"
 # which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 
-plugins=(git node)
+plugins=(git brew bundler git-hubflow github rails rake ruby rvm sublime tmux)
 
 source $ZSH/oh-my-zsh.sh
 [[ -f ~/.zshrc-local ]] && . ~/.zshrc-local
 [[ -f ~/.localrc ]] && . ~/.localrc
-
-export GOROOT=/usr/local/go
-export GOPATH=$HOME/golang
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 export EDITOR=vim
