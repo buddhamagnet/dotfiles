@@ -53,12 +53,14 @@ db/*.sqlite3
 .svn
 .cvs
 
-# Vim #
-#######
+# editors #
+###########
 
 *~
 .*.swp
 EOS
+*.sublime-project
+*.sublime-workspace
 
 # CTAGS #
 
