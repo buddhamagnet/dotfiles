@@ -34,3 +34,6 @@ source $ZSH/oh-my-zsh.sh
 [[ -f ~/.localrc ]] && . ~/.localrc
 
 export EDITOR=vim
+
+# source z jump-list
+. /usr/bin/z
