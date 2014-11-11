@@ -27,7 +27,7 @@ DISABLE_AUTO_TITLE="true"
 # which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 
-plugins=(git brew bundler git-hubflow github rails rake ruby rvm sublime tmux)
+plugins=(git brew bundler git-hubflow github rails rake ruby rvm sublime tmux go golang)
 
 source $ZSH/oh-my-zsh.sh
 [[ -f ~/.zshrc-local ]] && . ~/.zshrc-local
@@ -37,3 +37,7 @@ export EDITOR=vim
 
 # source z jump-list
 . /usr/bin/z
+
+export GOROOT=`go env GOROOT`
+export GOPATH=~/golang
+export PATH=$PATH:$GOROOT/bin::$GOPATH/bin
