@@ -40,4 +40,7 @@ export EDITOR=vim
 
 export GOROOT=`go env GOROOT`
 export GOPATH=~/golang
+# export GOPATH=~/api4
 export PATH=$PATH:$GOROOT/bin::$GOPATH/bin
+
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib
