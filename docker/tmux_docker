@@ -1,0 +1,31 @@
+tmux has-session -t drupal
+if [ $? != 0 ]
+then
+  tmux new-session -s docker -n BOOT2DOCKER -d
+  # spin up boot2docker in your VM.
+  tmux send-keys -t docker 'boot2docker up' C-m
+  tmux new-window -n DOCKER1 -t docker
+  # cd into the docker repo directory.
+  tmux send-keys -t docker 'cd /Users/buddhamagnet/Sites/golang/docker/docker' C-m
+  # configure your local git configuration in readiness for contributions.
+  tmux send-keys -t docker 'git config --local user.name "Dave Goodchild"' C-m
+  tmux send-keys -t docker 'git config --local user.email "buddhamagnet@gmail.com"' C-m
+  # create your development branch.
+  tmux send-keys -t docker 'git co -b development' C-m
+  # remove dangling docker images.
+  tmux send-keys -t docker 'docker rmi -f $(docker images -q -a -f dangling=true)' C-m
+  # build your development container from the Dockerfile.
+  tmux send-keys -t docker 'docker build -t development .' C-m
+  # run your container in interactive privileged mode, removing when shell closed.
+  tmux send-keys -t docker 'docker run --privileged --rm -ti development /bin/bash' C-m
+  tmux new-window -n DOCKER2 -t docker
+  # open a new window and boot docker environment.
+  tmux send-keys -t docker 'cd /Users/buddhamagnet/Sites/golang/docker/docker' C-m
+  tmux send-keys -t docker 'boot2docker shellinit' C-m
+  # open a new window and boot docker environment.
+  tmux new-window -n DOCKER3 -t docker
+  tmux send-keys -t docker 'cd /Users/buddhamagnet/Sites/golang/docker/docker' C-m
+  tmux send-keys -t docker 'boot2docker shellinit' C-m
+  tmux select-window -t docker:0
+fi
+tmux attach -t docker
