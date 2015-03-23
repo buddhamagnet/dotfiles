@@ -4,7 +4,7 @@ then
   tmux new-session -s docker -n BOOT2DOCKER -d
   # spin up boot2docker in your VM.
   tmux send-keys -t docker 'boot2docker up' C-m
-  tmux new-window -n DOCKER1 -t docker
+  tmux new-window -n DEV_SHELL_1 -t docker
   # cd into the docker repo directory.
   tmux send-keys -t docker 'cd /Users/buddhamagnet/Sites/golang/docker/docker' C-m
   # configure your local git configuration in readiness for contributions.
@@ -18,12 +18,12 @@ then
   tmux send-keys -t docker 'docker build -t development .' C-m
   # run your container in interactive privileged mode, removing when shell closed.
   tmux send-keys -t docker 'docker run --privileged --rm -ti development /bin/bash' C-m
-  tmux new-window -n DOCKER2 -t docker
+  tmux new-window -n DEV_SHELL_2 -t docker
   # open a new window and boot docker environment.
   tmux send-keys -t docker 'cd /Users/buddhamagnet/Sites/golang/docker/docker' C-m
   tmux send-keys -t docker 'boot2docker shellinit' C-m
   # open a new window and boot docker environment.
-  tmux new-window -n DOCKER3 -t docker
+  tmux new-window -n DEV_SHELL_3 -t docker
   tmux send-keys -t docker 'cd /Users/buddhamagnet/Sites/golang/docker/docker' C-m
   tmux send-keys -t docker 'boot2docker shellinit' C-m
   tmux select-window -t docker:0
