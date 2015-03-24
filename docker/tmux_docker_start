@@ -5,17 +5,23 @@ then
   # spin up boot2docker in your VM.
   tmux send-keys -t docker_start 'boot2docker up' C-m
   # open a new window and boot docker environment.
-  tmux new-window -n DEV_SHELL_1 -t docker_start
+  tmux new-window -n REPO -t docker_start
   tmux send-keys -t docker_start 'boot2docker shellinit' C-m
   # cd into the docker repo directory.
   tmux send-keys -t docker_start 'cd /Users/buddhamagnet/Sites/golang/docker/docker' C-m
-  # remove dangling docker images.
-  tmux send-keys -t docker_start 'docker rmi -f $(docker images -q -a -f dangling=true)' C-m
-  tmux new-window -n DEV_SHELL_2 -t docker_start
+  tmux new-window -n PS -t docker_start
+  tmux send-keys -t docker_start 'boot2docker shellinit' C-m
+  tmux send-keys -t docker_start 'cd /Users/buddhamagnet/Sites/golang/docker/docker' C-m
+  tmux send-keys -t docker_start 'docker ps' C-m
+  tmux new-window -n IMAGES -t docker_start
+  tmux send-keys -t docker_start 'boot2docker shellinit' C-m
+  tmux send-keys -t docker_start 'cd /Users/buddhamagnet/Sites/golang/docker/docker' C-m
+  tmux send-keys -t docker_start 'docker images' C-m
   # open a new window, boot docker environment and jump onto container.
+  tmux new-window -n CONTAINER_SHELL -t docker_start
   tmux send-keys -t docker_start 'cd /Users/buddhamagnet/Sites/golang/docker/docker' C-m
   tmux send-keys -t docker_start 'boot2docker shellinit' C-m
-  tmux send-keys -t docker_start 'docker run --privileged --rm -ti development /bin/bash' C-m
+  tmux send-keys -t docker_start 'docker run --privileged --rm -ti development-with-docker /bin/bash' C-m
   tmux select-window -t docker_start:0
 fi
 tmux attach -t docker_start
