@@ -1,3 +1,6 @@
+# This is a stripped down tmux script that cds into the local repository,
+# runs two tabs that list running containers and stored images, and jumps
+# onto the pre-rolled container with docker binary installed.
 tmux has-session -t drupal
 if [ $? != 0 ]
 then

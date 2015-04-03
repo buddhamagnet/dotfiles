@@ -1,3 +1,8 @@
+# This tmux script is a full from scratch boot of the docker environment. It 
+# configures git for signed commits, creates a development branch, removes
+# docker artefacts, builds the docker image, runs a container and opens two
+# more tabs for querying containers and images.
+
 tmux has-session -t drupal
 if [ $? != 0 ]
 then
