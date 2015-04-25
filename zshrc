@@ -9,6 +9,13 @@ alias geto="curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/i
 alias zconf="vim ~/.zshrc"
 alias ohmy="vim ~/.oh-my-zsh"
 
+alias s="bin/rails s"
+alias c="bin/rails c"
+alias gen="bin/rails g"
+alias r="bin/rake"
+alias m="bin/rake db:migrate"
+alias b="bin/bundle"
+
 # set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
@@ -47,3 +54,7 @@ alias -s go="go run"
 
 
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib
+
+export DOCKER_TLS_VERIFY=1
+export DOCKER_HOST=tcp://192.168.59.103:2376
+export DOCKER_CERT_PATH=/Users/buddhamagnet/.boot2docker/certs/boot2docker-vm
