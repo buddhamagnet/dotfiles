@@ -9,12 +9,10 @@ alias geto="curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/i
 alias zconf="vim ~/.zshrc"
 alias ohmy="vim ~/.oh-my-zsh"
 
-alias s="bin/rails s"
-alias c="bin/rails c"
-alias gen="bin/rails g"
-alias r="bin/rake"
-alias m="bin/rake db:migrate"
-alias b="bin/bundle"
+alias gob=go build
+alias goi=go install
+alias gov=go vet
+alias gol=golint
 
 # set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -34,7 +32,7 @@ DISABLE_AUTO_TITLE="true"
 # which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 
-plugins=(git brew bundler git-hubflow github rails rake ruby rvm sublime tmux go golang)
+plugins=(docker docker-compose git git-prompt go golang jsontools sublime tmux vagrant)
 
 source $ZSH/oh-my-zsh.sh
 [[ -f ~/.zshrc-local ]] && . ~/.zshrc-local
@@ -47,11 +45,7 @@ export EDITOR=vim
 
 export GOROOT=`go env GOROOT`
 export GOPATH=~/golang
-# export GOPATH=~/api4
 export PATH=$PATH:$GOROOT/bin::$GOPATH/bin
-
-alias -s go="go run"
-
 
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib
 
