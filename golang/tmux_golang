@@ -1,0 +1,23 @@
+tmux has-session -t golang
+if [ $? != 0 ]
+then
+  tmux new-session -s golang -n GOPATH -d
+  tmux send-keys -t golang 'cd $GOPATH' C-m
+  tmux send-keys -t golang 'ls -lpa' C-m
+  tmux new-window -n LOGS -t golang
+  tmux send-keys -t golang:1 'cd /var/log' C-m
+  tmux send-keys -t golang:1 'tail -f messages' C-m
+  tmux new-window -n EGO -t golang
+  tmux send-keys -t golang:2 'cd $GOPATH/src/github.com/EconomistDigitalSolutions' C-m
+  tmux send-keys -t golang:2 'ls -lpa' C-m
+  tmux new-window -n BGO -t golang
+  tmux send-keys -t golang:3 'cd $GOPATH/src/github.com/buddhamagnet' C-m
+  tmux send-keys -t golang:3 'ls -lpa' C-m
+  tmux new-window -n SHELL -t golang
+  tmux send-keys -t golang:4 'cd /etc' C-m
+  tmux send-keys -t golang:4 'ls -lpa' C-m
+  tmux new-window -n SPARE -t golang
+  tmux send-keys -t golang:4 'cd /' C-m
+  tmux select-window -t golang:0
+fi
+tmux attach -t golang
