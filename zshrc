@@ -63,3 +63,21 @@ export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib
 export DOCKER_TLS_VERIFY=1
 export DOCKER_HOST=tcp://192.168.59.103:2376
 export DOCKER_CERT_PATH=$HOME/.boot2docker/certs/boot2docker-vm
+
+# DEV DOCKER SETTTINGS, COMMENT OUT TO DISABLE
+
+export DOCKER_HOST=tcp://127.0.0.1:2375
+unset DOCKER_TLS_VERIFY
+unset DOCKER_CERT_PATH
+
+# KILL RUNNING CONTAINERS.
+alias dockerkill='docker kill $(docker ps -q)'
+
+# DELETE ALL STOPPED CONTAINERS.
+alias dockercleanc='printf "\n>>> Deleting stopped containers\n\n" && docker rm $(docker ps -a -q)'
+
+# DELETE ALL UNTAGGED IMAGES.
+alias dockercleani='printf "\n>>> Deleting untagged images\n\n" && docker rmi $(docker images -q -f dangling=true)'
+
+# DELETE ALL STOPPED CONTAINERS AND UNTAGGED IMAGES.
+alias dockerclean='dockercleanc || true && dockercleani'
