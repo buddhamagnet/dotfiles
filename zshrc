@@ -1,39 +1,21 @@
-###### OH-MY-ZSH
+###### ANTIGEN
 
-# Path to oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
-# Set name of the theme to load.
-ZSH_THEME="muse"
+source .antigen/antigen.zsh
 
-alias geto="curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh"
+antigen use oh-my-zsh
 
-alias zconf="vim ~/.zshrc"
+# Bundles from the default repo (robbyrussell's oh-my-zsh).
+antigen bundle git
+antigen bundle docker
+antigen bundle git-prompt
+antigen bundle golang
+antigen bundle go
+antigen bundle sublime
+antigen bundle zsh-users/zsh-syntax-highlighting
 
-alias ohmy="vim ~/.oh-my-zsh"
+antigen theme robbyrussell
 
-# Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
-
-# Comment this out to disable weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment following line if you want to disable colors in ls
-# DISABLE_LS_COLORS="true"
-
-# Uncomment following line if you want to disable autosetting terminal title.
-DISABLE_AUTO_TITLE="true"
-
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-
-plugins=(docker docker-compose git git-prompt go golang jsontools sublime tmux vagrant)
-
-source $ZSH/oh-my-zsh.sh
-[[ -f ~/.zshrc-local ]] && . ~/.zshrc-local
-[[ -f ~/.localrc ]] && . ~/.localrc
+antigen apply
 
 ###### GOLANG
 
