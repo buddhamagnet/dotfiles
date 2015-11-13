@@ -33,29 +33,47 @@ GOPKGS      := $(shell go list ./...)
 GOPKG       := $(shell go list)
 COVERAGEOUT := coverage.out
 COVERAGETMP := coverage.tmp
+DATE        := $(shell date -u '+%Y-%m-%d_%I:%M:%S%p')
+GITHASH     := $(shell git rev-parse HEAD)
+VENDOR      := $(shell go list ./...|grep -v /vendor/)
 
 ifndef GOBIN
 export GOBIN := $(GOPATH)/bin
+endif
+
+ifndef GO15VENDOREXPERIMENT
+export GO15VENDOREXPERIMENT="1"
 endif
 
 ##########################################################################################
 ## Project targets
 ##########################################################################################
 
-$(APPBIN): gomkbuild
-	 
+$(APPBIN): build
+$(APPBIN): buildx
+
 ##########################################################################################
 ## Main targets
 ##########################################################################################
 
-.PHONY: gomkbuild
-gomkbuild: goenvcheck $(GOSOURCES) ; @go build 
+.PHONY: build
 
-.PHONY: gomkxbuild
-gomkxbuild: ; $(GOX) 
+build: goenvcheck $(GOSOURCES) ; @go build -ldflags "-X main.buildstamp=$(DATE) -X main.githash=$(GITHASH)"
 
-.PHONY: gomkclean
-gomkclean: goenvcheck
+.PHONY: buildx
+
+buildx: goenvcheck $(GOSOURCES) ; GOOS=linux GOARCH=amd64 go build -ldflags "-X main.buildstamp=$(DATE) -X main.githash=$(GITHASH)"
+
+.PHONY: env
+
+env: goenvcheck $(GOSOURCES) ; go env
+
+.PHONY: tools
+
+tools: goenvcheck $(GOSOURCES) ; go get github.com/tools/godep && go get -u github.com/golang/lint/golint && go get github.com/kisielk/errcheck
+
+.PHONY: clean
+clean: goenvcheck
 	@go clean
 	@rm -f $(APPBIN)_*_386 $(APPBIN)_*_amd64 $(APPBIN)_*_arm $(APPBIN)_*.exe
 	@rm -f $(COVERAGEOUT) $(COVERAGETMP)
@@ -125,7 +143,7 @@ lint: $(LINT) ; @for src in $(GOSOURCES); do golint $$src || exit 1; done
 fmt: goenvcheck ; @go fmt
 
 .PHONY: test
-test: goenvcheck ; @go test -v ./...
+test: goenvcheck ; @go test -v $(VENDOR)
 
 .PHONY: race
 race: goenvcheck ; @for pkg in $(GOPKGS); do go test -v -race $$pkg || exit 1; done
@@ -151,9 +169,3 @@ cover: goenvcheck $(COVER)
 printvars:
 	@$(foreach V, $(sort $(.VARIABLES)), $(if $(filter-out environment% default automatic, $(origin $V)), $(warning $V=$($V) )))
 	@exit 0
-
-
-.PHONY: build
-
-build: 
-		go build -o build/${APPBIN}
