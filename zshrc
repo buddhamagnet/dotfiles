@@ -19,13 +19,9 @@ antigen apply
 
 ###### GOLANG
 
-alias gob=go build
-alias goi=go install
-alias gov=go vet
-alias gol=golint
-
 export GOROOT=`go env GOROOT`
 export GOPATH=~/golang
+export GO15VENDOREXPERIMENT="1"
 export PATH=$PATH:$GOROOT/bin::$GOPATH/bin
 
 ###### EDITORS
