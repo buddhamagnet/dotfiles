@@ -12,6 +12,12 @@
   excludesfile = ~/.gitignore
   editor = /usr/bin/env vim
 
+[alias]
+
+  co=checkout
+  br=branch
+  st=status
+
 [commit]
 
   template = ~/.gitcommit.txt
