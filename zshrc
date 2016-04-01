@@ -1,6 +1,6 @@
 ###### ANTIGEN
 
-. antigen/antigen.zsh
+. .antigen/antigen.zsh
 
 antigen use oh-my-zsh
 
