@@ -23,6 +23,8 @@ export GOROOT=`go env GOROOT`
 export GOPATH=~/golang
 export GO15VENDOREXPERIMENT="1"
 export PATH=$PATH:$GOROOT/bin::$GOPATH/bin
+export DRUPAL_ENDPOINT=http://stage.economist.com/ec-services
+export DRUPAL_CDN_ENDPOINT=http://cdn.static-economist.com
 
 ###### EDITORS
 
