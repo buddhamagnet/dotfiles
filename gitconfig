@@ -18,10 +18,6 @@
   br=branch
   st=status
 
-[commit]
-
-  template = ~/.gitcommit.txt
-
 [color]
 
   ui = true
@@ -37,5 +33,6 @@
 [help]
 
   autocorrect = 1
+  
 [http]
 	sslVerify = false
