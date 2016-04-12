@@ -2,7 +2,9 @@ source ~/Sites/dotfiles/antigen/antigen.zsh
 
 antigen use oh-my-zsh
 
+antigen bundle golang
 antigen bundle git
+antigen bundle zsh-users/zsh-syntax-highlighting
 
 antigen theme robbyrussell
 
