@@ -1,3 +1,13 @@
+source ~/Sites/dotfiles/antigen/antigen.zsh
+
+antigen use oh-my-zsh
+
+antigen bundle git
+
+antigen theme robbyrussell
+
+antigen apply
+
 ###### GOLANG
 
 export GOROOT=`go env GOROOT`
