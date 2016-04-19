@@ -19,6 +19,11 @@ export PATH=$PATH:$GOROOT/bin::$GOPATH/bin
 export DRUPAL_ENDPOINT=http://stage.economist.com/ec-services
 export DRUPAL_CDN_ENDPOINT=http://cdn.static-economist.com
 
+cover () { 
+    t="/tmp/go-cover.$$.tmp"
+    go test -coverprofile=$t $@ && go tool cover -html=$t && unlink $t
+}
+
 ###### EDITORS
 
 export EDITOR=vim
