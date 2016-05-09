@@ -1,0 +1,38 @@
+tmux has-session -t gopher
+if [ $? != 0 ]
+then
+  tmux new-session -s gopher -n DEV -d
+  tmux new-window -n GODOC -t gopher
+  tmux send-keys -t gopher:0 'godoc --http=:8000' C-m
+  tmux new-window -n BLOGS -t gopher
+  tmux send-keys -t gopher:1 'cd /Users/buddhamagnet/GOLANG/src/github.com/EconomistDigitalSolutions/mt-content-blogs' C-m
+  tmux send-keys -t gopher:1 'source /Users/buddhamagnet/.env' C-m
+  tmux send-keys -t gopher:1 './mt-content-blogs --port=:3000' C-m
+  tmux new-window -n ARTICLES -t gopher
+  tmux send-keys -t gopher:2 'cd /Users/buddhamagnet/GOLANG/src/github.com/EconomistDigitalSolutions/mt-content-articles' C-m
+  tmux send-keys -t gopher:2 'source /Users/buddhamagnet/.env' C-m
+  tmux send-keys -t gopher:2 './mt-content-articles --port=:3010' C-m
+  tmux new-window -n LISTS -t gopher
+  tmux send-keys -t gopher:3 'cd /Users/buddhamagnet/GOLANG/src/github.com/EconomistDigitalSolutions/mt-content-lists' C-m
+  tmux send-keys -t gopher:3 'source /Users/buddhamagnet/.env' C-m
+  tmux send-keys -t gopher:3 './mt-content-lists --port=:3020' C-m
+  tmux new-window -n MAPPER -t gopher
+  tmux send-keys -t gopher:4 'cd /Users/buddhamagnet/GOLANG/src/github.com/EconomistDigitalSolutions/mt-content-mapper' C-m
+  tmux send-keys -t gopher:4 'source /Users/buddhamagnet/.env' C-m
+  tmux send-keys -t gopher:4 './mt-content-mapper --port=:3030' C-m
+  tmux new-window -n NGINX -t gopher
+  tmux send-keys -t gopher:5 'nginx -s quit;' C-m
+  tmux send-keys -t gopher:5 'nginx' C-m
+  tmux new-window -n MENUS -t gopher
+  tmux send-keys -t gopher:6 'cd /Users/buddhamagnet/GOLANG/src/github.com/EconomistDigitalSolutions/mt-content-menus' C-m
+  tmux send-keys -t gopher:6 'source /Users/buddhamagnet/.env' C-m
+  tmux send-keys -t gopher:6 './mt-content-menus --port=:3040' C-m
+  tmux new-window -n VARNISH -t gopher
+  tmux send-keys -t gopher:7 '/usr/local/sbin/varnishd -a 127.0.0.1:6081 -n /usr/local/var/varnish -f /usr/local/etc/varnish/default.vcl' C-m
+  tmux new-window -n FEEDS -t gopher
+  tmux send-keys -t gopher:8 'cd /Users/buddhamagnet/GOLANG/src/github.com/EconomistDigitalSolutions/mt-content-feeds' C-m
+  tmux send-keys -t gopher:8 'source /Users/buddhamagnet/.env' C-m
+  tmux send-keys -t gopher:8 './mt-content-feeds --port=:3050' C-m
+  tmux select-window -t gopher:0
+fi
+tmux attach -t gopher
