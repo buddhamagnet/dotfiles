@@ -18,6 +18,7 @@ export GO15VENDOREXPERIMENT="1"
 export PATH=$PATH:$GOROOT/bin::$GOPATH/bin
 export DRUPAL_ENDPOINT=http://stage.economist.com/ec-services
 export DRUPAL_CDN_ENDPOINT=http://cdn.static-economist.com
+API_GATEWAY_ENDPOINT=http://mt-content.stage.s.aws.economist.com
 
 cover () { 
     t="/tmp/go-cover.$$.tmp"
