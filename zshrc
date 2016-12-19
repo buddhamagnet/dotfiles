@@ -51,6 +51,8 @@ unset DOCKER_CERT_PATH
 
 # KILL RUNNING CONTAINERS.
 alias dockerkill='docker kill $(docker ps -q)'
+# KILL ALL CONTAINERS
+alias dockerboom='docker ps -a -q | xargs docker rm'
 
 # DELETE ALL STOPPED CONTAINERS.
 alias dockercleanc='printf "\n>>> Deleting stopped containers\n\n" && docker rm $(docker ps -a -q)'
@@ -60,3 +62,6 @@ alias dockercleani='printf "\n>>> Deleting untagged images\n\n" && docker rmi $(
 
 # DELETE ALL STOPPED CONTAINERS AND UNTAGGED IMAGES.
 alias dockerclean='dockercleanc || true && dockercleani'
+
+export NVM_DIR="/Users/buddhamagnet/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
