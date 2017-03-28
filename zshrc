@@ -13,7 +13,7 @@ antigen apply
 ###### GOLANG
 
 export GOROOT=`go env GOROOT`
-export GOPATH=~/golang
+export GOPATH=~/golang:~/Sites/5calls/go
 export GO15VENDOREXPERIMENT="1"
 export PATH=$PATH:$GOROOT/bin::$GOPATH/bin
 export DRUPAL_ENDPOINT=http://stage.economist.com/ec-services

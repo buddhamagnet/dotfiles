@@ -1,0 +1,17 @@
+tmux has-session -t kili
+if [ $? != 0 ]
+then
+  tmux new-session -d -s kili
+  tmux new-window -n CODE -t kili:0 -c '/Users/buddhamagnet/Sites/PeakBI/kilimanjaro'
+  tmux new-window -n SERVER -t kili:1 -c '/Users/buddhamagnet/Sites/PeakBI/kilimanjaro'
+  tmux send-keys -t kili:1 'npm start' C-m
+  tmux new-window -n TESTS -t kili:2 -c '/Users/buddhamagnet/Sites/PeakBI/kilimanjaro'
+  tmux send-keys -t kili:2 'npm test --watch' C-m
+  tmux new-window -n API -t kili:3 -c '/Users/buddhamagnet/Sites/PeakBI/kilimanjaro-api'
+  tmux send-keys -t kili:3 'eval "$(docker-machine env default)"' C-m
+  tmux send-keys -t kili:3 'npm start' C-m
+  tmux new-window -n SEED -t kili:4 -c '/Users/buddhamagnet/Sites/PeakBI/kilimanjaro-api'
+  tmux send-keys -t kili:4 'npm run seed' C-m
+  tmux select-window -t kili:0
+fi
+tmux attach -t kili

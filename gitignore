@@ -47,6 +47,10 @@ tmp**/*
 config/database.yml
 db/*.sqlite3
 
+# Node cruft #
+node_modules
+npm.debug.log
+
 # Version control #
 ###################
 
