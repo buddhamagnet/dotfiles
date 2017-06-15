@@ -13,7 +13,7 @@ antigen apply
 ###### GOLANG
 
 export GOROOT=`go env GOROOT`
-export GOPATH=~/golang:~/Sites/5calls/go
+export GOPATH=~/golang
 export GO15VENDOREXPERIMENT="1"
 export PATH=$PATH:$GOROOT/bin::$GOPATH/bin
 export DRUPAL_ENDPOINT=http://stage.economist.com/ec-services
@@ -62,6 +62,3 @@ alias dockercleani='printf "\n>>> Deleting untagged images\n\n" && docker rmi $(
 
 # DELETE ALL STOPPED CONTAINERS AND UNTAGGED IMAGES.
 alias dockerclean='dockercleanc || true && dockercleani'
-
-export NVM_DIR="/Users/buddhamagnet/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
