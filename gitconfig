@@ -17,6 +17,12 @@
   co=checkout
   br=branch
   st=status
+  change = codereview change
+  gofmt = codereview gofmt
+  mail = codereview mail
+  pending = codereview pending
+  submit = codereview submit
+  sync = codereview sync
 
 [color]
 
@@ -36,5 +42,8 @@
   
 [http]
 	sslVerify = true
+	cookiefile = /Users/buddhamagnet/.gitcookies
 [url "git@github.com:"]
 	insteadOf = https://github.com/
+
+
