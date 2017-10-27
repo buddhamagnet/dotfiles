@@ -12,7 +12,6 @@ antigen apply
 
 ###### GOLANG
 
-export GOROOT=`go env GOROOT`
 export GOPATH=~/golang
 export GO15VENDOREXPERIMENT="1"
 export PATH=$PATH:$GOROOT/bin::$GOPATH/bin
@@ -31,7 +30,7 @@ export EDITOR=vim
 
 ###### JUMPLIST
 
-. /usr/bin/z
+. /usr/local/bin/z.sh
 
 ###### PATHS
 
@@ -62,3 +61,16 @@ alias dockercleani='printf "\n>>> Deleting untagged images\n\n" && docker rmi $(
 
 # DELETE ALL STOPPED CONTAINERS AND UNTAGGED IMAGES.
 alias dockerclean='dockercleanc || true && dockercleani'
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/buddhamagnet/.nvm/versions/node/v7.2.1/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/buddhamagnet/.nvm/versions/node/v7.2.1/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/buddhamagnet/.nvm/versions/node/v7.2.1/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/buddhamagnet/.nvm/versions/node/v7.2.1/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
