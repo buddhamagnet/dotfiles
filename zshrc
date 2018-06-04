@@ -1,3 +1,5 @@
+cal
+date
 source ~/Sites/dotfiles/antigen/antigen.zsh
 
 antigen use oh-my-zsh
@@ -13,7 +15,6 @@ antigen apply
 ###### GOLANG
 
 export GOPATH=~/golang
-export GO15VENDOREXPERIMENT="1"
 export PATH=$PATH:$GOROOT/bin::$GOPATH/bin
 
 cover () { 
