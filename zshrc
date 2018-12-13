@@ -12,6 +12,10 @@ antigen bundle golang
 antigen bundle git
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle z
+antigen bundle command-not-found
+antigen bundle copyfile
+antigen bundle colored-man-pages
+antigen bundle vundle
 
 antigen theme gnzh
 
