@@ -9,6 +9,7 @@ export PS1="\e[0;32m[\u@\h \W]\$ \e[m "
 
 export GOPATH=~/golang
 export PATH=$PATH:$GOROOT/bin::$GOPATH/bin
+export PATH=$(brew --prefix openvpn)/sbin:$PATH
 
 ###### EDITORS
 
