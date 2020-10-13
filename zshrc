@@ -24,7 +24,13 @@ antigen apply
 ###### GOLANG
 
 export GOPATH=~/golang
-export PATH=$PATH:~/Library/Python/2.7/bin:$GOROOT/bin::$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin::$GOPATH/bin
+
+###### PYTHON
+
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
 
 ###### EDITORS
 
