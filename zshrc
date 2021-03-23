@@ -4,7 +4,7 @@ date
 
 # ANTIGEN
 
-source ~/Sites/dotfiles/antigen/antigen.zsh
+source ~/Code/dotfiles/antigen/antigen.zsh
 
 antigen use oh-my-zsh
 
