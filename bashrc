@@ -16,7 +16,14 @@ export EDITOR=vim
 
 ###### PAGERS
 
-export PAGER="/usr/bin/most -s"
+export PAGER="/usr/local/bin/most -s"
+
+###### ALIASES
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
 
 ###### JUMPLIST
 
