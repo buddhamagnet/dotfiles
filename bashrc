@@ -14,6 +14,10 @@ export PATH=$PATH:$GOROOT/bin::$GOPATH/bin
 
 export EDITOR=vim
 
+###### PAGERS
+
+export PAGER="/usr/bin/most -s"
+
 ###### JUMPLIST
 
 . /usr/local/bin/z.sh
