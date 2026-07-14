@@ -1,12 +1,22 @@
 == Installation
 
-  git clone git://github.com/buddhamagnet/dotfiles ~/.dotfiles
-  cd ~/.dotfiles
-  rake install
-  install oh-my-zsh using alias in .localrc file
+  git clone https://github.com/buddhamagnet/dotfiles ~/Code/dotfiles
+  cd ~/Code/dotfiles
+  cargo run --release
+
+Add --dry-run to preview what would be linked without touching anything:
+
+  cargo run --release -- --dry-run
+
+== What it does
+
++dotfiles-install+ (src/main.rs) symlinks the files in this repo into
+$HOME (e.g. zshrc -> ~/.zshrc). If a target already exists and differs,
+you'll be prompted to overwrite (y/n/a/q, same as the old rake task);
+anything overwritten is moved to ~/.dotfiles-backup/ first, not deleted.
 
 == Features
 
-A port of Ryan Bate's dotfiles repo tuned to the buddhaverse.
-
-The zshrc file in this repo is customised for oh-my-zsh.
+zshrc is customised for oh-my-zsh; gitconfig, tmux.conf, gdbinit, ghci,
+and a Leiningen profile are all included and kept in sync with what
+actually runs day to day.
