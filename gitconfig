@@ -1,49 +1,13 @@
-[user]
-
-  name = buddhamagnet
-  email = buddhamagnet@gmail.com
-
-[apply]
-
-  whitespace = warn
-
-[core]
-
-  excludesfile = ~/.gitignore
-  editor = /usr/bin/env vim
-
-[alias]
-
-  co=checkout
-  br=branch
-  st=status
-  change = codereview change
-  gofmt = codereview gofmt
-  mail = codereview mail
-  pending = codereview pending
-  submit = codereview submit
-  sync = codereview sync
-
-[color]
-
-  ui = true
-
-[push]
-
-  default = tracking
-
-[mergetool]
-
-  keepBackup = true
-
-[help]
-
-  autocorrect = 1
-  
-[http]
-	sslVerify = true
-	cookiefile = /Users/buddhamagnet/.gitcookies
-[url "git@github.com:"]
+[url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
-
-
+[safe]
+	directory = /Users/buddhamagnet/Code/cdk/basic
+[user]
+	name = Dave Goodchild
+	email = buddhamagnet@gmail.com
+[alias]
+	wt = worktree
+	wtl = worktree list
+	wta = worktree add
+	wtr = worktree remove
+	wtp = worktree prune
