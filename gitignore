@@ -8,7 +8,6 @@
 
 # Packages #
 ############
-
 *.7z
 *.dmg
 *.gz
@@ -20,56 +19,28 @@
 
 # Logs and databases #
 ######################
-
 *.log
 *.sql
 *.sqlite3
 
 # OS generated files #
 ######################
-
 .DS_Store
 ehthumbs.db
 Icon
-
-# Windows generated files #
-###########################
-
 Thumbs.db
-
-# Rails cruft #
-###############
-
-vendor/bundle
-vendor/cache
-log/*.log
-tmp**/*
-config/database.yml
-db/*.sqlite3
-
-# Node cruft #
-node_modules
-npm.debug.log
 
 # Version control #
 ###################
-
 .svn
 .cvs
 
 # editors #
 ###########
-
 *~
 .*.swp
-EOS
 *.sublime-project
 *.sublime-workspace
 
 # CTAGS #
-
 tags
-
-# CRAP #
-
-bad_dave*
