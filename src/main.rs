@@ -56,7 +56,18 @@ fn main() {
             continue;
         }
 
-        if dst.exists() || dst.symlink_metadata().is_ok() {
+        let conflict = dst.exists() || dst.symlink_metadata().is_ok();
+
+        if dry_run {
+            if conflict {
+                println!("would overwrite ~/{dst_rel} (existing moved to ~/.dotfiles-backup/)");
+            } else {
+                println!("would link      ~/{dst_rel} -> {}", src.display());
+            }
+            continue;
+        }
+
+        if conflict {
             let choice = if replace_all {
                 Choice::Yes
             } else {
@@ -74,11 +85,6 @@ fn main() {
                 Choice::All => replace_all = true,
                 Choice::Yes => {}
             }
-        }
-
-        if dry_run {
-            println!("would link ~/{dst_rel} -> {}", src.display());
-            continue;
         }
 
         if let Err(e) = link_file(&src, &dst, &backup_dir) {
