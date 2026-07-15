@@ -113,6 +113,10 @@ export PATH="/Users/buddhamagnet/.codeium/windsurf/bin:$PATH"
 # opencode
 export PATH=/Users/buddhamagnet/.opencode/bin:$PATH
 
+claude-work() {
+  CLAUDE_CONFIG_DIR="$HOME/.claude-work" claude "$@"
+}
+
 claude() {
   echo "Syncing Claude config..."
   git -C ~/.claude pull origin main --quiet
