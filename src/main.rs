@@ -19,6 +19,7 @@ const MANIFEST: &[(&str, &str)] = &[
     ("tmux/tmux.conf", ".tmux.conf"),
     (".lein/profiles.clj", ".lein/profiles.clj"),
     (".emacs.d", ".emacs.d"),
+    ("ghostty/config", ".config/ghostty/config"),
 ];
 
 enum Choice {
