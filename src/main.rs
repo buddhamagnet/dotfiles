@@ -23,6 +23,15 @@ const MANIFEST: &[(&str, &str)] = &[
     ("ghostty/config", ".config/ghostty/config"),
 ];
 
+/// The catppuccin tmux plugin, cloned at a pinned tag. Bump TAG to update.
+const TMUX_PLUGIN_REPO: &str = "https://github.com/catppuccin/tmux";
+const TMUX_PLUGIN_TAG: &str = "v2.3.0";
+
+/// Clone destination. Keep in step with the `run` line in tmux/tmux.conf --
+/// the repo is catppuccin/tmux, so the org is the parent dir and the repo
+/// itself is the `tmux` dir holding catppuccin.tmux.
+const TMUX_PLUGIN_DIR: &str = ".config/tmux/plugins/catppuccin/tmux";
+
 enum Choice {
     Yes,
     No,
@@ -99,6 +108,7 @@ fn main() {
     if !dry_run {
         install_jetbrains_mono();
         install_nushell();
+        install_tmux_plugins();
     }
 }
 
@@ -195,6 +205,56 @@ fn install_jetbrains_mono() {
         Ok(s) if s.success() => println!("JetBrains Mono installed successfully"),
         Ok(_) => eprintln!("Warning: brew install font-jetbrains-mono failed"),
         Err(e) => eprintln!("Warning: failed to run brew: {e}"),
+    }
+}
+
+/// Clone the catppuccin tmux plugin at a pinned tag if it isn't already there.
+/// tmux.conf `run`s catppuccin.tmux from this path, so without it tmux reports
+/// an error on every start and the status bar falls back to the bare theme.
+fn install_tmux_plugins() {
+    let home = PathBuf::from(env::var("HOME").expect("$HOME is not set"));
+    let dest = home.join(TMUX_PLUGIN_DIR);
+
+    if dest.join("catppuccin.tmux").exists() {
+        println!("catppuccin tmux plugin already installed");
+        return;
+    }
+
+    // Something is there but it isn't the plugin -- don't clobber it, git
+    // clone would fail on the non-empty directory anyway.
+    if dest.exists() {
+        eprintln!(
+            "Warning: {} exists but has no catppuccin.tmux; leaving it alone",
+            dest.display()
+        );
+        return;
+    }
+
+    if let Some(parent) = dest.parent() {
+        if let Err(e) = fs::create_dir_all(parent) {
+            eprintln!("Warning: could not create {}: {e}", parent.display());
+            return;
+        }
+    }
+
+    println!("Installing catppuccin tmux plugin {TMUX_PLUGIN_TAG}...");
+    let status = Command::new("git")
+        .args([
+            "clone",
+            "--quiet",
+            "--depth",
+            "1",
+            "--branch",
+            TMUX_PLUGIN_TAG,
+            TMUX_PLUGIN_REPO,
+        ])
+        .arg(&dest)
+        .status();
+
+    match status {
+        Ok(s) if s.success() => println!("catppuccin tmux plugin installed successfully"),
+        Ok(_) => eprintln!("Warning: git clone of {TMUX_PLUGIN_REPO} failed"),
+        Err(e) => eprintln!("Warning: failed to run git: {e}"),
     }
 }
 
