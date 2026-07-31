@@ -17,6 +17,7 @@ const MANIFEST: &[(&str, &str)] = &[
     ("gdbinit", ".gdbinit"),
     ("ghci", ".ghci"),
     ("tmux/tmux.conf", ".tmux.conf"),
+    ("tmux/tmux-workspace.sh", "tmux-workspace.sh"),
     (".lein/profiles.clj", ".lein/profiles.clj"),
     (".emacs.d", ".emacs.d"),
     ("ghostty/config", ".config/ghostty/config"),
