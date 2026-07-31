@@ -97,6 +97,7 @@ fn main() {
 
     if !dry_run {
         install_jetbrains_mono();
+        install_nushell();
     }
 }
 
@@ -192,6 +193,30 @@ fn install_jetbrains_mono() {
     match status {
         Ok(s) if s.success() => println!("JetBrains Mono installed successfully"),
         Ok(_) => eprintln!("Warning: brew install font-jetbrains-mono failed"),
+        Err(e) => eprintln!("Warning: failed to run brew: {e}"),
+    }
+}
+
+/// Install Nushell via Homebrew if not already installed.
+fn install_nushell() {
+    // Check if nushell is already installed
+    let check_status = Command::new("which").arg("nu").status();
+
+    if let Ok(s) = check_status {
+        if s.success() {
+            println!("Nushell already installed");
+            return;
+        }
+    }
+
+    println!("Installing Nushell...");
+    let status = Command::new("brew")
+        .args(["install", "nushell"])
+        .status();
+
+    match status {
+        Ok(s) if s.success() => println!("Nushell installed successfully"),
+        Ok(_) => eprintln!("Warning: brew install nushell failed"),
         Err(e) => eprintln!("Warning: failed to run brew: {e}"),
     }
 }
