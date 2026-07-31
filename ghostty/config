@@ -1,4 +1,5 @@
 theme = catppuccin-mocha
+font-family = JetBrains Mono
 font-size = 19
 mouse-hide-while-typing = true
 window-decoration = true

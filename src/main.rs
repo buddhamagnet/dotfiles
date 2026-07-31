@@ -7,7 +7,7 @@ use std::fs;
 use std::io::{self, Write};
 use std::os::unix::fs::symlink;
 use std::path::{Path, PathBuf};
-use std::process::exit;
+use std::process::{exit, Command};
 
 /// (path in repo, path under $HOME). Directories are linked whole.
 const MANIFEST: &[(&str, &str)] = &[
@@ -94,6 +94,10 @@ fn main() {
         }
         println!("linked     ~/{dst_rel} -> {}", src.display());
     }
+
+    if !dry_run {
+        install_jetbrains_mono();
+    }
 }
 
 /// True if `dst` is a symlink that already resolves to `src`.
@@ -161,4 +165,33 @@ fn unique_backup_path(backup_dir: &Path, name: &std::ffi::OsStr) -> PathBuf {
         }
     }
     unreachable!()
+}
+
+/// Install JetBrains Mono font via Homebrew if not already installed.
+fn install_jetbrains_mono() {
+    let home = env::var("HOME").expect("$HOME is not set");
+    let font_path = PathBuf::from(&home).join("Library/Fonts");
+
+    // Check if JetBrains Mono is already installed
+    if let Ok(entries) = fs::read_dir(&font_path) {
+        for entry in entries.flatten() {
+            if let Some(name) = entry.file_name().to_str() {
+                if name.to_lowercase().contains("jetbrains") {
+                    println!("JetBrains Mono already installed");
+                    return;
+                }
+            }
+        }
+    }
+
+    println!("Installing JetBrains Mono font...");
+    let status = Command::new("brew")
+        .args(["install", "--cask", "font-jetbrains-mono"])
+        .status();
+
+    match status {
+        Ok(s) if s.success() => println!("JetBrains Mono installed successfully"),
+        Ok(_) => eprintln!("Warning: brew install font-jetbrains-mono failed"),
+        Err(e) => eprintln!("Warning: failed to run brew: {e}"),
+    }
 }
