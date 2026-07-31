@@ -108,12 +108,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 
-# Added by Windsurf
-export PATH="/Users/buddhamagnet/.codeium/windsurf/bin:$PATH"
-
-# opencode
-export PATH=/Users/buddhamagnet/.opencode/bin:$PATH
-
 claude-work() {
   CLAUDE_CONFIG_DIR="$HOME/.claude-work" claude "$@"
 }
@@ -135,12 +129,8 @@ claude() {
   fi
 }
 
-# bun completions
-[ -s "/Users/buddhamagnet/.bun/_bun" ] && source "/Users/buddhamagnet/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
 # Entire CLI shell completion
 autoload -Uz compinit && compinit && source <(entire completion zsh)
+
+# Enable vi mode
+bindkey -v
