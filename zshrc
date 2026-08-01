@@ -139,5 +139,7 @@ source <(carapace _carapace)
 
 # Enable vi mode
 bindkey -v
+# Restore Ctrl+R for history search in vi mode
+bindkey '^R' history-incremental-search-backward
 
 eval "$(starship init zsh)"
