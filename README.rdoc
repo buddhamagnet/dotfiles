@@ -17,7 +17,8 @@ anything overwritten is moved to ~/.dotfiles-backup/ first, not deleted.
 
 It then installs what the dotfiles depend on but can't symlink, skipping
 anything already present: the JetBrains Mono font and Nushell via
-Homebrew, and the catppuccin tmux plugin, git-cloned at a pinned tag into
+Homebrew, Starship via its official installer script, and the catppuccin
+tmux plugin, git-cloned at a pinned tag into
 ~/.config/tmux/plugins/catppuccin/tmux. tmux.conf +run+s that plugin, so
 tmux errors on every start without it. To move to a newer catppuccin,
 bump +TMUX_PLUGIN_TAG+ in src/main.rs and re-clone.

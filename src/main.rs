@@ -21,6 +21,7 @@ const MANIFEST: &[(&str, &str)] = &[
     (".lein/profiles.clj", ".lein/profiles.clj"),
     (".emacs.d", ".emacs.d"),
     ("ghostty/config", ".config/ghostty/config"),
+    ("starship/starship.toml", ".config/starship/starship.toml"),
 ];
 
 /// The catppuccin tmux plugin, cloned at a pinned tag. Bump TAG to update.
@@ -108,6 +109,7 @@ fn main() {
     if !dry_run {
         install_jetbrains_mono();
         install_nushell();
+        install_starship();
         install_tmux_plugins();
     }
 }
@@ -279,5 +281,30 @@ fn install_nushell() {
         Ok(s) if s.success() => println!("Nushell installed successfully"),
         Ok(_) => eprintln!("Warning: brew install nushell failed"),
         Err(e) => eprintln!("Warning: failed to run brew: {e}"),
+    }
+}
+
+/// Install starship via the official installer script if not already installed.
+fn install_starship() {
+    // Check if starship is already installed
+    let check_status = Command::new("which").arg("starship").status();
+
+    if let Ok(s) = check_status {
+        if s.success() {
+            println!("Starship already installed");
+            return;
+        }
+    }
+
+    println!("Installing Starship...");
+    let status = Command::new("sh")
+        .arg("-c")
+        .arg("curl -sS https://starship.rs/install.sh | sh -s -- --yes")
+        .status();
+
+    match status {
+        Ok(s) if s.success() => println!("Starship installed successfully"),
+        Ok(_) => eprintln!("Warning: starship install script failed"),
+        Err(e) => eprintln!("Warning: failed to run installer: {e}"),
     }
 }

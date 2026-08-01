@@ -134,3 +134,5 @@ autoload -Uz compinit && compinit && source <(entire completion zsh)
 
 # Enable vi mode
 bindkey -v
+
+eval "$(starship init zsh)"
