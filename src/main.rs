@@ -222,7 +222,7 @@ fn install_tmux_plugins() {
     let dest = home.join(TMUX_PLUGIN_DIR);
 
     if dest.join("catppuccin.tmux").exists() {
-        println!("catppuccin tmux plugin already installed");
+        println!("Catppuccin tmux plugin already installed");
         return;
     }
 
