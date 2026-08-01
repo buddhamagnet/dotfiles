@@ -2,8 +2,6 @@
 success_symbol = '[●](bold green)'
 error_symbol = '[●](bold red)'
 
-"$schema" = 'https://starship.rs/config-schema.json'
-
 [aws]
 format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'
 
