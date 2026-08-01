@@ -1,4 +1,4 @@
-theme = catppuccin-mocha
+theme = Catppuccin Mocha
 font-family = JetBrains Mono
 font-size = 19
 mouse-hide-while-typing = true
@@ -6,3 +6,7 @@ window-decoration = true
 macos-option-as-alt = true
 background-opacity = 0.7
 background-blur-radius = 20
+
+# Quick terminal configuration
+quick-terminal-position = center
+quick-terminal-size = 70%,60%
