@@ -11,6 +11,7 @@ use std::process::{exit, Command};
 
 /// (path in repo, path under $HOME). Directories are linked whole.
 const MANIFEST: &[(&str, &str)] = &[
+    ("bashrc", ".bashrc"),
     ("zshrc", ".zshrc"),
     ("gitconfig", ".gitconfig"),
     ("gitignore", ".gitignore"),
@@ -21,6 +22,8 @@ const MANIFEST: &[(&str, &str)] = &[
     (".lein/profiles.clj", ".lein/profiles.clj"),
     (".emacs.d", ".emacs.d"),
     ("ghostty/config", ".config/ghostty/config"),
+    ("nushell/env.nu", ".config/nushell/env.nu"),
+    ("nushell/config.nu", ".config/nushell/config.nu"),
     ("starship/starship.toml", ".config/starship/starship.toml"),
 ];
 
@@ -110,6 +113,7 @@ fn main() {
         install_jetbrains_mono();
         install_nushell();
         install_starship();
+        install_carapace();
         install_tmux_plugins();
     }
 }
@@ -306,5 +310,29 @@ fn install_starship() {
         Ok(s) if s.success() => println!("Starship installed successfully"),
         Ok(_) => eprintln!("Warning: starship install script failed"),
         Err(e) => eprintln!("Warning: failed to run installer: {e}"),
+    }
+}
+
+/// Install carapace via Homebrew if not already installed.
+fn install_carapace() {
+    // Check if carapace is already installed
+    let check_status = Command::new("which").arg("carapace").status();
+
+    if let Ok(s) = check_status {
+        if s.success() {
+            println!("Carapace already installed");
+            return;
+        }
+    }
+
+    println!("Installing Carapace...");
+    let status = Command::new("brew")
+        .args(["install", "carapace"])
+        .status();
+
+    match status {
+        Ok(s) if s.success() => println!("Carapace installed successfully"),
+        Ok(_) => eprintln!("Warning: brew install carapace failed"),
+        Err(e) => eprintln!("Warning: failed to run brew: {e}"),
     }
 }

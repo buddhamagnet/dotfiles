@@ -132,6 +132,11 @@ claude() {
 # Entire CLI shell completion
 autoload -Uz compinit && compinit && source <(entire completion zsh)
 
+# Carapace shell completion
+export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
+zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+source <(carapace _carapace)
+
 # Enable vi mode
 bindkey -v
 
