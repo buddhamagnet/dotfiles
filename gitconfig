@@ -2,8 +2,6 @@
 	excludesfile = ~/.gitignore
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
-[safe]
-	directory = /Users/buddhamagnet/Code/cdk/basic
 [user]
 	name = Dave Goodchild
 	email = buddhamagnet@gmail.com
