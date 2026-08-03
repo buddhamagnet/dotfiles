@@ -50,6 +50,12 @@ eval "$(starship init zsh)"
 # Worktrunk shell integration
 eval "$(wt config shell init zsh)"
 
+# Zoxide (smarter cd)
+eval "$(zoxide init zsh)"
+
+# fzf (fuzzy finder)
+eval "$(fzf --zsh)"
+
 # Qwen Code PATH block begin
 export PATH='/Users/buddhamagnet/.local/bin':$PATH
 # Qwen Code PATH block end

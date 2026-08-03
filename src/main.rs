@@ -116,6 +116,8 @@ fn main() {
         install_starship();
         install_carapace();
         install_worktrunk();
+        install_zoxide();
+        install_fzf();
         install_tmux_plugins();
     }
 }
@@ -359,6 +361,52 @@ fn install_worktrunk() {
     match status {
         Ok(s) if s.success() => println!("Worktrunk installed successfully"),
         Ok(_) => eprintln!("Warning: brew install worktrunk failed"),
+        Err(e) => eprintln!("Warning: failed to run brew: {e}"),
+    }
+}
+
+/// Install zoxide via Homebrew if not already installed.
+fn install_zoxide() {
+    let check_status = Command::new("which").arg("zoxide").status();
+
+    if let Ok(s) = check_status {
+        if s.success() {
+            println!("Zoxide already installed");
+            return;
+        }
+    }
+
+    println!("Installing Zoxide...");
+    let status = Command::new("brew")
+        .args(["install", "zoxide"])
+        .status();
+
+    match status {
+        Ok(s) if s.success() => println!("Zoxide installed successfully"),
+        Ok(_) => eprintln!("Warning: brew install zoxide failed"),
+        Err(e) => eprintln!("Warning: failed to run brew: {e}"),
+    }
+}
+
+/// Install fzf via Homebrew if not already installed.
+fn install_fzf() {
+    let check_status = Command::new("which").arg("fzf").status();
+
+    if let Ok(s) = check_status {
+        if s.success() {
+            println!("fzf already installed");
+            return;
+        }
+    }
+
+    println!("Installing fzf...");
+    let status = Command::new("brew")
+        .args(["install", "fzf"])
+        .status();
+
+    match status {
+        Ok(s) if s.success() => println!("fzf installed successfully"),
+        Ok(_) => eprintln!("Warning: brew install fzf failed"),
         Err(e) => eprintln!("Warning: failed to run brew: {e}"),
     }
 }

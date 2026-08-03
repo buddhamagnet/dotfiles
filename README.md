@@ -26,6 +26,8 @@ The installer automatically installs these dependencies if not already present:
 | ![Starship](https://img.shields.io/badge/Starship-DD0B78?style=flat&logo=starship&logoColor=white) | Fast, customizable shell prompt | Latest | [Website](https://starship.rs/) · [GitHub](https://github.com/starship/starship) |
 | ![Carapace](https://img.shields.io/badge/Carapace-2E3440?style=flat) | Multi-shell completion generator | Latest | [Website](https://carapace.sh/) · [GitHub](https://github.com/carapace-sh/carapace-bin) |
 | ![Worktrunk](https://img.shields.io/badge/Worktrunk-5E81AC?style=flat) | Git worktree manager | Latest | [GitHub](https://github.com/jamesob/worktrunk) |
+| ![zoxide](https://img.shields.io/badge/zoxide-F48FB1?style=flat) | Smarter cd command (tracks frecency) | Latest | [GitHub](https://github.com/ajeetdsouza/zoxide) |
+| ![fzf](https://img.shields.io/badge/fzf-00ADD8?style=flat) | Command-line fuzzy finder | Latest | [GitHub](https://github.com/junegunn/fzf) |
 | ![Catppuccin](https://img.shields.io/badge/Catppuccin-1E1E2E?style=flat) | Tmux theme plugin (Mocha variant) | v2.3.0 | [GitHub](https://github.com/catppuccin/tmux) |
 
 ## ⚙️ Shell & Terminal Tools
@@ -123,6 +125,8 @@ The installer symlinks these files from the repository into your home directory:
 - **Carapace** shell completion bridges for zsh, fish, bash, and inshellisense
 - **Entire CLI** shell completion integration
 - **Worktrunk** shell integration for Zsh and Nushell
+- **zoxide** smart directory navigation based on frecency (frequency + recency)
+- **fzf** fuzzy finder for files, directories, and command history
 
 ### Tmux Configuration
 - **Custom prefix:** `C-a` instead of default `C-b`
