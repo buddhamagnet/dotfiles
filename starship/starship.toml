@@ -20,7 +20,7 @@ truncate_to_repo = true
 format = '\[[$path]($style)[$read_only]($read_only_style)\]'
 
 [aws]
-format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'
+disabled = true
 
 [azure]
 format = '\[[$symbol($subscription)]($style)\]'
