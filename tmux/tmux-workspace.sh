@@ -3,6 +3,7 @@
 
 SESSION="workspace"
 WORK_DIR="/Users/buddhamagnet/Code/wpp/Unite"
+WORKTREES_DIR="/Users/buddhamagnet/Code/wpp/Unite-bare"
 
 # True if window $1's pane is sitting at a shell prompt, so it is safe to type
 # a command into. Claude reports its version (e.g. "2.1.220") as the pane
@@ -42,6 +43,11 @@ if ! tmux list-windows -t $SESSION | grep -q "^3:"; then
     tmux send-keys -t $SESSION:3 "claude" C-m
 elif at_shell_prompt 3; then
     tmux send-keys -t $SESSION:3 "claude" C-m
+fi
+
+# Ensure window 4 (WORKTREES) exists - shell at the Unite bare repo
+if ! tmux list-windows -t $SESSION | grep -q "^4:"; then
+    tmux new-window -t $SESSION:4 -n "WORKTREES" -c "$WORKTREES_DIR"
 fi
 
 # Select the ZSH window by default
