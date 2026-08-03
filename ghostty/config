@@ -4,3 +4,13 @@ font-size = 19
 background-opacity = 0.7
 background-blur-radius = 20
 
+# Keybindings for terminal scrollback
+# Map Page Up/Down to scroll actions instead of passing to shell
+keybind = page_up=scroll_page_up
+keybind = page_down=scroll_page_down
+keybind = home=scroll_to_top
+keybind = end=scroll_to_bottom
+
+# macOS-style scroll shortcuts
+keybind = super+home=scroll_to_top
+keybind = super+end=scroll_to_bottom
