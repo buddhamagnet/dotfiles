@@ -1,6 +1,23 @@
+# Custom format order - only show essential modules
+format = """
+$directory\
+$git_branch\
+$git_status\
+$nodejs\
+$rust\
+$golang\
+$docker_context\
+$kubernetes\
+$character"""
+
 [character] # See https://starship.rs/config/#character
 success_symbol = '[●](bold green)'
 error_symbol = '[●](bold red)'
+
+[directory]
+truncation_length = 3
+truncate_to_repo = true
+format = '\[[$path]($style)[$read_only]($read_only_style)\]'
 
 [aws]
 format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'
@@ -60,7 +77,7 @@ format = '\[[$symbol$branch]($style)\]'
 format = '\[[\($hash$tag\)]($style)\]'
 
 [git_metrics]
-format = '\[[+$added]($added_style)\]\[[-$deleted]($deleted_style)\]'
+disabled = true
 
 [git_state]
 format = '\[[$state ($progress_current/$progress_total)]($style)\]'
