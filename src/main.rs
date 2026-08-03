@@ -115,6 +115,7 @@ fn main() {
         install_nushell();
         install_starship();
         install_carapace();
+        install_worktrunk();
         install_tmux_plugins();
     }
 }
@@ -334,6 +335,30 @@ fn install_carapace() {
     match status {
         Ok(s) if s.success() => println!("Carapace installed successfully"),
         Ok(_) => eprintln!("Warning: brew install carapace failed"),
+        Err(e) => eprintln!("Warning: failed to run brew: {e}"),
+    }
+}
+
+/// Install worktrunk via Homebrew if not already installed.
+fn install_worktrunk() {
+    // Check if worktrunk is already installed
+    let check_status = Command::new("which").arg("wt").status();
+
+    if let Ok(s) = check_status {
+        if s.success() {
+            println!("Worktrunk already installed");
+            return;
+        }
+    }
+
+    println!("Installing Worktrunk...");
+    let status = Command::new("brew")
+        .args(["install", "worktrunk"])
+        .status();
+
+    match status {
+        Ok(s) if s.success() => println!("Worktrunk installed successfully"),
+        Ok(_) => eprintln!("Warning: brew install worktrunk failed"),
         Err(e) => eprintln!("Warning: failed to run brew: {e}"),
     }
 }

@@ -6,3 +6,6 @@ export PATH="$HOME/bin:/usr/local/bin:$PATH"
 # Carapace shell completion
 export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
 source <(carapace _carapace)
+
+# Worktrunk shell integration
+eval "$(wt config shell init bash)"

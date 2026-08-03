@@ -144,6 +144,9 @@ bindkey '^R' history-incremental-search-backward
 
 eval "$(starship init zsh)"
 
+# Worktrunk shell integration
+eval "$(wt config shell init zsh)"
+
 # Qwen Code PATH block begin
 export PATH='/Users/buddhamagnet/.local/bin':$PATH
 # Qwen Code PATH block end
