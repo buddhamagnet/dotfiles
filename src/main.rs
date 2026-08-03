@@ -25,6 +25,7 @@ const MANIFEST: &[(&str, &str)] = &[
     ("nushell/env.nu", ".config/nushell/env.nu"),
     ("nushell/config.nu", ".config/nushell/config.nu"),
     ("starship/starship.toml", ".config/starship/starship.toml"),
+    ("nvim/init.lua", ".config/nvim/init.lua")
 ];
 
 /// The catppuccin tmux plugin, cloned at a pinned tag. Bump TAG to update.

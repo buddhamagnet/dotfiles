@@ -143,3 +143,7 @@ bindkey -v
 bindkey '^R' history-incremental-search-backward
 
 eval "$(starship init zsh)"
+
+# Qwen Code PATH block begin
+export PATH='/Users/buddhamagnet/.local/bin':$PATH
+# Qwen Code PATH block end
