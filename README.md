@@ -34,7 +34,6 @@ These tools are referenced in configurations but require separate installation:
 
 | Tool | Description | Links |
 |------|-------------|-------|
-| ![oh-my-zsh](https://img.shields.io/badge/oh--my--zsh-1A2C34?style=flat&logo=ohmyzsh&logoColor=white) | Zsh framework with plugins (git, z, colored-man-pages) | [Website](https://ohmyz.sh/) · [GitHub](https://github.com/ohmyzsh/ohmyzsh) |
 | ![Ghostty](https://img.shields.io/badge/Ghostty-000000?style=flat) | Fast, native terminal emulator | [Website](https://ghostty.org/) · [GitHub](https://github.com/ghostty-org/ghostty) |
 | ![tmux](https://img.shields.io/badge/tmux-1BB91F?style=flat&logo=tmux&logoColor=white) | Terminal multiplexer | [GitHub](https://github.com/tmux/tmux) · [Wiki](https://github.com/tmux/tmux/wiki) |
 | ![NVM](https://img.shields.io/badge/NVM-333333?style=flat&logo=node.js&logoColor=white) | Node Version Manager | [GitHub](https://github.com/nvm-sh/nvm) |
@@ -97,7 +96,7 @@ The installer symlinks these files from the repository into your home directory:
 | Source (Repo) | Destination ($HOME) | Purpose |
 |---------------|---------------------|---------|
 | `bashrc` | `~/.bashrc` | Bash configuration with Carapace and Worktrunk |
-| `zshrc` | `~/.zshrc` | Zsh configuration with oh-my-zsh, plugins, and aliases |
+| `zshrc` | `~/.zshrc` | Zsh configuration with Starship prompt, Carapace completions, vi mode, and custom functions |
 | `gitconfig` | `~/.gitconfig` | Git configuration with SSH GitHub URLs and worktree aliases |
 | `gitignore` | `~/.gitignore` | Global Git ignore patterns |
 | `gdbinit` | `~/.gdbinit` | GNU Debugger configuration (Intel disassembly) |
@@ -121,9 +120,9 @@ The installer symlinks these files from the repository into your home directory:
 
 ### Shell Enhancements
 - **Vi mode** in Zsh with preserved Ctrl+R history search
-- **oh-my-zsh** plugins: git, z (directory jumping), colored-man-pages
-- **Robbyrussell** theme for oh-my-zsh
 - **Carapace** shell completion bridges for zsh, fish, bash, and inshellisense
+- **Entire CLI** shell completion integration
+- **Worktrunk** shell integration for Zsh and Nushell
 
 ### Tmux Configuration
 - **Custom prefix:** `C-a` instead of default `C-b`
@@ -151,14 +150,6 @@ wt config shell install nu
 ```
 
 This creates a static `wt.nu` file in Nushell's vendor-autoload directory. Re-run this command after updating Worktrunk.
-
-### oh-my-zsh Installation
-
-If oh-my-zsh is not already installed, install it separately:
-
-```bash
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-```
 
 ## 🔧 Updating
 
