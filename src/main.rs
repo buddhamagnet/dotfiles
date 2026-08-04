@@ -28,14 +28,10 @@ const MANIFEST: &[(&str, &str)] = &[
     ("nvim/init.lua", ".config/nvim/init.lua")
 ];
 
-/// The catppuccin tmux plugin, cloned at a pinned tag. Bump TAG to update.
-const TMUX_PLUGIN_REPO: &str = "https://github.com/catppuccin/tmux";
-const TMUX_PLUGIN_TAG: &str = "v2.3.0";
-
-/// Clone destination. Keep in step with the `run` line in tmux/tmux.conf --
-/// the repo is catppuccin/tmux, so the org is the parent dir and the repo
-/// itself is the `tmux` dir holding catppuccin.tmux.
-const TMUX_PLUGIN_DIR: &str = ".config/tmux/plugins/catppuccin/tmux";
+/// TPM (Tmux Plugin Manager), cloned at a pinned tag.
+const TPM_REPO: &str = "https://github.com/tmux-plugins/tpm";
+const TPM_TAG: &str = "v3.1.0";
+const TPM_DIR: &str = ".config/tmux/plugins/tpm";
 
 enum Choice {
     Yes,
@@ -218,23 +214,22 @@ fn install_jetbrains_mono() {
     }
 }
 
-/// Clone the catppuccin tmux plugin at a pinned tag if it isn't already there.
-/// tmux.conf `run`s catppuccin.tmux from this path, so without it tmux reports
-/// an error on every start and the status bar falls back to the bare theme.
+/// Clone TPM (Tmux Plugin Manager) at a pinned tag if it isn't already there.
+/// TPM manages tmux plugins including Catppuccin theme.
+/// tmux.conf initializes TPM at the end with `run '~/.config/tmux/plugins/tpm/tpm'`.
 fn install_tmux_plugins() {
     let home = PathBuf::from(env::var("HOME").expect("$HOME is not set"));
-    let dest = home.join(TMUX_PLUGIN_DIR);
+    let dest = home.join(TPM_DIR);
 
-    if dest.join("catppuccin.tmux").exists() {
-        println!("Catppuccin tmux plugin already installed");
+    if dest.join("tpm").exists() {
+        println!("TPM already installed");
         return;
     }
 
-    // Something is there but it isn't the plugin -- don't clobber it, git
-    // clone would fail on the non-empty directory anyway.
+    // Something is there but it isn't TPM -- don't clobber it
     if dest.exists() {
         eprintln!(
-            "Warning: {} exists but has no catppuccin.tmux; leaving it alone",
+            "Warning: {} exists but has no tpm script; leaving it alone",
             dest.display()
         );
         return;
@@ -247,7 +242,7 @@ fn install_tmux_plugins() {
         }
     }
 
-    println!("Installing catppuccin tmux plugin {TMUX_PLUGIN_TAG}...");
+    println!("Installing TPM {TPM_TAG}...");
     let status = Command::new("git")
         .args([
             "clone",
@@ -255,15 +250,15 @@ fn install_tmux_plugins() {
             "--depth",
             "1",
             "--branch",
-            TMUX_PLUGIN_TAG,
-            TMUX_PLUGIN_REPO,
+            TPM_TAG,
+            TPM_REPO,
         ])
         .arg(&dest)
         .status();
 
     match status {
-        Ok(s) if s.success() => println!("catppuccin tmux plugin installed successfully"),
-        Ok(_) => eprintln!("Warning: git clone of {TMUX_PLUGIN_REPO} failed"),
+        Ok(s) if s.success() => println!("TPM installed successfully"),
+        Ok(_) => eprintln!("Warning: git clone of {TPM_REPO} failed"),
         Err(e) => eprintln!("Warning: failed to run git: {e}"),
     }
 }

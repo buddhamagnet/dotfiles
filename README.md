@@ -28,7 +28,32 @@ The installer automatically installs these dependencies if not already present:
 | ![Worktrunk](https://img.shields.io/badge/Worktrunk-5E81AC?style=flat) | Git worktree manager | Latest | [GitHub](https://github.com/jamesob/worktrunk) |
 | ![zoxide](https://img.shields.io/badge/zoxide-F48FB1?style=flat) | Smarter cd command (tracks frecency) | Latest | [GitHub](https://github.com/ajeetdsouza/zoxide) |
 | ![fzf](https://img.shields.io/badge/fzf-00ADD8?style=flat) | Command-line fuzzy finder | Latest | [GitHub](https://github.com/junegunn/fzf) |
-| ![Catppuccin](https://img.shields.io/badge/Catppuccin-1E1E2E?style=flat) | Tmux theme plugin (Mocha variant) | v2.3.0 | [GitHub](https://github.com/catppuccin/tmux) |
+| ![TPM](https://img.shields.io/badge/TPM-1BB91F?style=flat) | Tmux Plugin Manager | v3.1.0 | [GitHub](https://github.com/tmux-plugins/tpm) |
+
+### TPM Plugins
+
+TPM is automatically installed and initialized. The following plugins are configured:
+
+| Plugin | Description | Repository |
+|--------|-------------|------------|
+| **TPM** | Tmux Plugin Manager - manages all other plugins | [tmux-plugins/tpm](https://github.com/tmux-plugins/tpm) |
+| **Catppuccin** | Soothing pastel theme for tmux (Mocha variant) | [catppuccin/tmux](https://github.com/catppuccin/tmux) |
+| **tmux-cpu** | CPU and RAM usage indicators for tmux status bar | [tmux-plugins/tmux-cpu](https://github.com/tmux-plugins/tmux-cpu) |
+
+**Installing plugins:**  
+After running the dotfiles installer, open tmux and press `Prefix + I` (Ctrl-a + Shift-i) to install all declared plugins.
+
+**Managing plugins:**
+- Update plugins: `Prefix + U`
+- Remove unlisted plugins: `Prefix + alt + u`
+
+**Adding new plugins:**  
+Add plugin declarations to `tmux/tmux.conf` (after the existing plugin declarations, before the TPM initialization line):
+```tmux
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+```
+Then press `Prefix + I` inside tmux to install them.
 
 ## ⚙️ Shell & Terminal Tools
 
@@ -130,7 +155,8 @@ The installer symlinks these files from the repository into your home directory:
 
 ### Tmux Configuration
 - **Custom prefix:** `C-a` instead of default `C-b`
-- **Catppuccin theme** automatically cloned at v2.3.0
+- **TPM (Tmux Plugin Manager)** automatically installed for plugin management
+- **Catppuccin theme** managed via TPM (Mocha variant)
 - **Workspace automation:** `tmux-workspace.sh` creates 5-window setup with Claude instances
 
 ### Git Integration
