@@ -114,7 +114,8 @@ fn main() {
         install_worktrunk();
         install_zoxide();
         install_fzf();
-        install_tmux_plugins();
+        install_tpm();
+        install_tpm_plugins();
     }
 }
 
@@ -217,7 +218,7 @@ fn install_jetbrains_mono() {
 /// Clone TPM (Tmux Plugin Manager) at a pinned tag if it isn't already there.
 /// TPM manages tmux plugins including Catppuccin theme.
 /// tmux.conf initializes TPM at the end with `run '~/.config/tmux/plugins/tpm/tpm'`.
-fn install_tmux_plugins() {
+fn install_tpm() {
     let home = PathBuf::from(env::var("HOME").expect("$HOME is not set"));
     let dest = home.join(TPM_DIR);
 
@@ -260,6 +261,48 @@ fn install_tmux_plugins() {
         Ok(s) if s.success() => println!("TPM installed successfully"),
         Ok(_) => eprintln!("Warning: git clone of {TPM_REPO} failed"),
         Err(e) => eprintln!("Warning: failed to run git: {e}"),
+    }
+}
+
+/// Run TPM's install_plugins script to automatically install all declared plugins.
+/// This reads plugin declarations from tmux.conf and clones them to ~/.config/tmux/plugins/.
+fn install_tpm_plugins() {
+    let home = PathBuf::from(env::var("HOME").expect("$HOME is not set"));
+    let install_script = home.join(".config/tmux/plugins/tpm/bin/install_plugins");
+    let tmux_conf = home.join(".tmux.conf");
+
+    // Check if TPM is installed
+    if !install_script.exists() {
+        eprintln!("Warning: TPM install script not found; skipping plugin installation");
+        return;
+    }
+
+    // Check if tmux.conf exists
+    if !tmux_conf.exists() {
+        eprintln!("Warning: .tmux.conf not found; skipping plugin installation");
+        return;
+    }
+
+    println!("Installing TPM plugins...");
+
+    // First, start tmux server and source tmux.conf to initialize TPM
+    let source_status = Command::new("tmux")
+        .args(["start-server", ";", "source-file", tmux_conf.to_str().unwrap()])
+        .status();
+
+    if let Err(e) = source_status {
+        eprintln!("Warning: failed to initialize tmux: {e}");
+        return;
+    }
+
+    // Now run the install_plugins script
+    let status = Command::new(&install_script)
+        .status();
+
+    match status {
+        Ok(s) if s.success() => println!("TPM plugins installed successfully"),
+        Ok(_) => eprintln!("Warning: TPM plugin installation failed"),
+        Err(e) => eprintln!("Warning: failed to run TPM install script: {e}"),
     }
 }
 
