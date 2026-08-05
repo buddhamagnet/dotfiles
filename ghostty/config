@@ -14,3 +14,15 @@ keybind = end=scroll_to_bottom
 # macOS-style scroll shortcuts
 keybind = super+home=scroll_to_top
 keybind = super+end=scroll_to_bottom
+
+# Split and window management
+keybind = super+d=new_split:right
+keybind = super+shift+d=new_split:down
+keybind = super+w=close_surface
+keybind = super+shift+w=close_all_windows
+
+# Navigate between splits
+keybind = super+left=goto_split:left
+keybind = super+right=goto_split:right
+keybind = super+up=goto_split:top
+keybind = super+down=goto_split:bottom
