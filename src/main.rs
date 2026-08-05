@@ -114,6 +114,8 @@ fn main() {
         install_worktrunk();
         install_zoxide();
         install_fzf();
+        install_ripgrep();
+        install_fd();
         install_tpm();
         install_tpm_plugins();
     }
@@ -445,6 +447,52 @@ fn install_fzf() {
     match status {
         Ok(s) if s.success() => println!("fzf installed successfully"),
         Ok(_) => eprintln!("Warning: brew install fzf failed"),
+        Err(e) => eprintln!("Warning: failed to run brew: {e}"),
+    }
+}
+
+/// Install ripgrep via Homebrew if not already installed.
+fn install_ripgrep() {
+    let check_status = Command::new("which").arg("rg").status();
+
+    if let Ok(s) = check_status {
+        if s.success() {
+            println!("ripgrep already installed");
+            return;
+        }
+    }
+
+    println!("Installing ripgrep...");
+    let status = Command::new("brew")
+        .args(["install", "ripgrep"])
+        .status();
+
+    match status {
+        Ok(s) if s.success() => println!("ripgrep installed successfully"),
+        Ok(_) => eprintln!("Warning: brew install ripgrep failed"),
+        Err(e) => eprintln!("Warning: failed to run brew: {e}"),
+    }
+}
+
+/// Install fd via Homebrew if not already installed.
+fn install_fd() {
+    let check_status = Command::new("which").arg("fd").status();
+
+    if let Ok(s) = check_status {
+        if s.success() {
+            println!("fd already installed");
+            return;
+        }
+    }
+
+    println!("Installing fd...");
+    let status = Command::new("brew")
+        .args(["install", "fd"])
+        .status();
+
+    match status {
+        Ok(s) if s.success() => println!("fd installed successfully"),
+        Ok(_) => eprintln!("Warning: brew install fd failed"),
         Err(e) => eprintln!("Warning: failed to run brew: {e}"),
     }
 }
