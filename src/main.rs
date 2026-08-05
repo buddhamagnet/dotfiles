@@ -25,7 +25,7 @@ const MANIFEST: &[(&str, &str)] = &[
     ("nushell/env.nu", ".config/nushell/env.nu"),
     ("nushell/config.nu", ".config/nushell/config.nu"),
     ("starship/starship.toml", ".config/starship.toml"),
-    ("nvim/init.lua", ".config/nvim/init.lua")
+    ("nvim", ".config/nvim")
 ];
 
 /// TPM (Tmux Plugin Manager), cloned at a pinned tag.
