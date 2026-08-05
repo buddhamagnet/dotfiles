@@ -1,6 +1,6 @@
 # 🏠 Dotfiles
 
-Personal development environment configuration for macOS. Automated Rust-based installer manages shell configurations (Zsh, Nushell, Bash), terminal setup (Ghostty, tmux), and development tools (Git, Neovim, Emacs) with a unified Catppuccin Mocha theme.
+Personal development environment configuration for macOS. Automated Rust-based installer manages shell configurations (zsh, nushell, bash), terminal setup (ghostty, tmux), and development tools (git, neovim, emacs) with a unified catppuccin mocha theme.
 
 ## 🚀 Quick Start
 
@@ -25,19 +25,21 @@ The installer automatically installs these dependencies if not already present:
 | ![Nushell](https://img.shields.io/badge/Nushell-4E9A06?style=flat&logo=nushell&logoColor=white) | Modern shell with structured data | Latest | [Website](https://www.nushell.sh/) · [GitHub](https://github.com/nushell/nushell) |
 | ![Starship](https://img.shields.io/badge/Starship-DD0B78?style=flat&logo=starship&logoColor=white) | Fast, customizable shell prompt | Latest | [Website](https://starship.rs/) · [GitHub](https://github.com/starship/starship) |
 | ![Carapace](https://img.shields.io/badge/Carapace-2E3440?style=flat) | Multi-shell completion generator | Latest | [Website](https://carapace.sh/) · [GitHub](https://github.com/carapace-sh/carapace-bin) |
-| ![Worktrunk](https://img.shields.io/badge/Worktrunk-5E81AC?style=flat) | Git worktree manager | Latest | [GitHub](https://github.com/jamesob/worktrunk) |
+| ![worktrunk](https://img.shields.io/badge/worktrunk-5E81AC?style=flat) | Git worktree manager | Latest | [GitHub](https://github.com/jamesob/worktrunk) |
 | ![zoxide](https://img.shields.io/badge/zoxide-F48FB1?style=flat) | Smarter cd command (tracks frecency) | Latest | [GitHub](https://github.com/ajeetdsouza/zoxide) |
 | ![fzf](https://img.shields.io/badge/fzf-00ADD8?style=flat) | Command-line fuzzy finder | Latest | [GitHub](https://github.com/junegunn/fzf) |
-| ![TPM](https://img.shields.io/badge/TPM-1BB91F?style=flat) | Tmux Plugin Manager | v3.1.0 | [GitHub](https://github.com/tmux-plugins/tpm) |
+| ![ripgrep](https://img.shields.io/badge/ripgrep-3FB950?style=flat) | Fast line-oriented search tool | Latest | [GitHub](https://github.com/BurntSushi/ripgrep) |
+| ![fd](https://img.shields.io/badge/fd-FF6B6B?style=flat) | Modern find replacement | Latest | [GitHub](https://github.com/sharkdp/fd) |
+| ![tpm](https://img.shields.io/badge/tpm-1BB91F?style=flat) | tmux plugin manager | v3.1.0 | [GitHub](https://github.com/tmux-plugins/tpm) |
 
-### TPM Plugins
+### tpm plugins
 
-TPM is automatically installed and initialized. The following plugins are configured:
+tpm is automatically installed and initialized. The following plugins are configured:
 
 | Plugin | Description | Repository |
 |--------|-------------|------------|
-| **TPM** | Tmux Plugin Manager - manages all other plugins | [tmux-plugins/tpm](https://github.com/tmux-plugins/tpm) |
-| **Catppuccin** | Soothing pastel theme for tmux (Mocha variant) | [catppuccin/tmux](https://github.com/catppuccin/tmux) |
+| **tpm** | tmux plugin manager - manages all other plugins | [tmux-plugins/tpm](https://github.com/tmux-plugins/tpm) |
+| **catppuccin** | soothing pastel theme for tmux (mocha variant) | [catppuccin/tmux](https://github.com/catppuccin/tmux) |
 | **tmux-cpu** | CPU and RAM usage indicators for tmux status bar | [tmux-plugins/tmux-cpu](https://github.com/tmux-plugins/tmux-cpu) |
 
 **Installing plugins:**  
@@ -55,28 +57,63 @@ set -g @plugin 'tmux-plugins/tmux-resurrect'
 ```
 Then press `Prefix + I` inside tmux to install them.
 
+### neovim plugins
+
+neovim uses [lazy.nvim](https://github.com/folke/lazy.nvim) for plugin management. Configured plugins:
+
+| Plugin | Description | Repository |
+|--------|-------------|------------|
+| **lazy.nvim** | modern plugin manager with lazy loading | [folke/lazy.nvim](https://github.com/folke/lazy.nvim) |
+| **catppuccin** | soothing pastel theme for neovim (mocha variant) | [catppuccin/nvim](https://github.com/catppuccin/nvim) |
+| **telescope** | fuzzy finder over lists (files, buffers, etc.) | [nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) |
+| **telescope-fzf-native** | native C sorter for telescope (performance) | [telescope-fzf-native.nvim](https://github.com/nvim-telescope/telescope-fzf-native.nvim) |
+| **plenary** | lua utility library (required by telescope) | [nvim-lua/plenary.nvim](https://github.com/nvim-lua/plenary.nvim) |
+
+**telescope keybindings:**
+- `<leader>ff` - Find files
+- `<leader>fg` - Live grep (search text in files)
+- `<leader>fb` - List buffers
+- `<leader>fh` - Search help tags
+
+**Managing plugins:**
+- View plugin status: `:Lazy`
+- Install/update plugins: `:Lazy sync`
+- Check plugin health: `:checkhealth telescope`
+
+**Adding new plugins:**  
+Edit `nvim/lua/plugins/init.lua` and add plugin specs:
+```lua
+{
+  "plugin/name",
+  config = function()
+    -- Plugin configuration here
+  end,
+}
+```
+Plugins auto-install on next nvim launch, or run `:Lazy sync`.
+
 ## ⚙️ Shell & Terminal Tools
 
 These tools are referenced in configurations but require separate installation:
 
 | Tool | Description | Links |
 |------|-------------|-------|
-| ![Ghostty](https://img.shields.io/badge/Ghostty-000000?style=flat) | Fast, native terminal emulator | [Website](https://ghostty.org/) · [GitHub](https://github.com/ghostty-org/ghostty) |
+| ![ghostty](https://img.shields.io/badge/ghostty-000000?style=flat) | fast, native terminal emulator | [Website](https://ghostty.org/) · [GitHub](https://github.com/ghostty-org/ghostty) |
 | ![tmux](https://img.shields.io/badge/tmux-1BB91F?style=flat&logo=tmux&logoColor=white) | Terminal multiplexer | [GitHub](https://github.com/tmux/tmux) · [Wiki](https://github.com/tmux/tmux/wiki) |
-| ![NVM](https://img.shields.io/badge/NVM-333333?style=flat&logo=node.js&logoColor=white) | Node Version Manager | [GitHub](https://github.com/nvm-sh/nvm) |
+| ![nvm](https://img.shields.io/badge/nvm-333333?style=flat&logo=node.js&logoColor=white) | node version manager | [GitHub](https://github.com/nvm-sh/nvm) |
 
 ## 🛠️ Development Tools
 
 | Tool | Description | Version | Links |
 |------|-------------|---------|-------|
-| ![Git](https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white) | Version control system | Latest | [Website](https://git-scm.com/) · [GitHub](https://github.com/git/git) |
-| ![Neovim](https://img.shields.io/badge/Neovim-57A143?style=flat&logo=neovim&logoColor=white) | Hyperextensible Vim-based text editor | Latest | [Website](https://neovim.io/) · [GitHub](https://github.com/neovim/neovim) |
-| ![Emacs](https://img.shields.io/badge/Emacs-7F5AB6?style=flat&logo=gnu-emacs&logoColor=white) | Extensible text editor (Clojure-focused) | Latest | [Website](https://www.gnu.org/software/emacs/) · [GNU](https://savannah.gnu.org/projects/emacs) |
-| ![Leiningen](https://img.shields.io/badge/Leiningen-5881D8?style=flat&logo=clojure&logoColor=white) | Clojure build automation tool | CIDER nREPL 0.62.0 | [Website](https://leiningen.org/) · [GitHub](https://github.com/technomancy/leiningen) |
-| ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=mysql&logoColor=white) | Relational database | 8.3.0 | [Website](https://www.mysql.com/) · [Dev](https://dev.mysql.com/) |
-| ![GDB](https://img.shields.io/badge/GDB-A42E2B?style=flat) | GNU Debugger | Latest | [Website](https://www.sourceware.org/gdb/) |
-| ![GHCi](https://img.shields.io/badge/GHCi-5D4F85?style=flat&logo=haskell&logoColor=white) | Haskell REPL | Latest | [Website](https://www.haskell.org/ghc/) |
-| **Claude Code** | AI-powered coding assistant | Latest | [Website](https://claude.ai/code) |
+| ![git](https://img.shields.io/badge/git-F05032?style=flat&logo=git&logoColor=white) | version control system | Latest | [Website](https://git-scm.com/) · [GitHub](https://github.com/git/git) |
+| ![neovim](https://img.shields.io/badge/neovim-57A143?style=flat&logo=neovim&logoColor=white) | hyperextensible vim-based text editor | Latest | [Website](https://neovim.io/) · [GitHub](https://github.com/neovim/neovim) |
+| ![emacs](https://img.shields.io/badge/emacs-7F5AB6?style=flat&logo=gnu-emacs&logoColor=white) | extensible text editor (clojure-focused) | Latest | [Website](https://www.gnu.org/software/emacs/) · [GNU](https://savannah.gnu.org/projects/emacs) |
+| ![leiningen](https://img.shields.io/badge/leiningen-5881D8?style=flat&logo=clojure&logoColor=white) | clojure build automation tool | CIDER nREPL 0.62.0 | [Website](https://leiningen.org/) · [GitHub](https://github.com/technomancy/leiningen) |
+| ![mysql](https://img.shields.io/badge/mysql-4479A1?style=flat&logo=mysql&logoColor=white) | relational database | 8.3.0 | [Website](https://www.mysql.com/) · [Dev](https://dev.mysql.com/) |
+| ![gdb](https://img.shields.io/badge/gdb-A42E2B?style=flat) | GNU debugger | Latest | [Website](https://www.sourceware.org/gdb/) |
+| ![ghci](https://img.shields.io/badge/ghci-5D4F85?style=flat&logo=haskell&logoColor=white) | haskell REPL | Latest | [Website](https://www.haskell.org/ghc/) |
+| **claude code** | AI-powered coding assistant | Latest | [Website](https://claude.ai/code) |
 
 ## 📋 Installation
 
@@ -122,64 +159,66 @@ The installer symlinks these files from the repository into your home directory:
 
 | Source (Repo) | Destination ($HOME) | Purpose |
 |---------------|---------------------|---------|
-| `bashrc` | `~/.bashrc` | Bash configuration with Carapace and Worktrunk |
-| `zshrc` | `~/.zshrc` | Zsh configuration with Starship prompt, Carapace completions, vi mode, and custom functions |
-| `gitconfig` | `~/.gitconfig` | Git configuration with SSH GitHub URLs and worktree aliases |
-| `gitignore` | `~/.gitignore` | Global Git ignore patterns |
-| `gdbinit` | `~/.gdbinit` | GNU Debugger configuration (Intel disassembly) |
-| `ghci` | `~/.ghci` | Haskell REPL configuration (lambda prompt) |
-| `tmux/tmux.conf` | `~/.tmux.conf` | Tmux configuration with Catppuccin theme, custom prefix (C-a) |
-| `tmux/tmux-workspace.sh` | `~/tmux-workspace.sh` | Automated tmux workspace setup script |
-| `.lein/profiles.clj` | `~/.lein/profiles.clj` | Leiningen configuration with CIDER plugin |
-| `.emacs.d` | `~/.emacs.d` | Emacs configuration (entire directory) |
-| `ghostty/config` | `~/.config/ghostty/config` | Ghostty terminal configuration with Catppuccin theme |
-| `nushell/env.nu` | `~/.config/nushell/env.nu` | Nushell environment configuration |
-| `nushell/config.nu` | `~/.config/nushell/config.nu` | Nushell main configuration |
-| `starship/starship.toml` | `~/.config/starship/starship.toml` | Starship prompt customization |
-| `nvim/init.lua` | `~/.config/nvim/init.lua` | Neovim configuration |
+| `bashrc` | `~/.bashrc` | bash configuration with carapace and worktrunk |
+| `zshrc` | `~/.zshrc` | zsh configuration with starship prompt, carapace completions, vi mode, and custom functions |
+| `gitconfig` | `~/.gitconfig` | git configuration with SSH GitHub URLs and worktree aliases |
+| `gitignore` | `~/.gitignore` | global git ignore patterns |
+| `gdbinit` | `~/.gdbinit` | GNU debugger configuration (Intel disassembly) |
+| `ghci` | `~/.ghci` | haskell REPL configuration (lambda prompt) |
+| `tmux/tmux.conf` | `~/.tmux.conf` | tmux configuration with catppuccin theme, custom prefix (C-a) |
+| `tmux/tmux-workspace.sh` | `~/tmux-workspace.sh` | automated tmux workspace setup script |
+| `.lein/profiles.clj` | `~/.lein/profiles.clj` | leiningen configuration with CIDER plugin |
+| `.emacs.d` | `~/.emacs.d` | emacs configuration (entire directory) |
+| `ghostty/config` | `~/.config/ghostty/config` | ghostty terminal configuration with catppuccin theme |
+| `nushell/env.nu` | `~/.config/nushell/env.nu` | nushell environment configuration |
+| `nushell/config.nu` | `~/.config/nushell/config.nu` | nushell main configuration |
+| `starship/starship.toml` | `~/.config/starship/starship.toml` | starship prompt customization |
+| `nvim` | `~/.config/nvim` | neovim configuration with lazy.nvim plugin manager |
 
 ## ✨ Features
 
-### Visual Theme
-- **Catppuccin Mocha** theme across tmux and Ghostty for consistent aesthetics
-- **JetBrains Mono** font with ligatures
-- **Starship** prompt with extensive customization
+### visual theme
+- **catppuccin mocha** theme across tmux and ghostty for consistent aesthetics
+- **jetbrains mono** font with ligatures
+- **starship** prompt with extensive customization
 
-### Shell Enhancements
-- **Vi mode** in Zsh with preserved Ctrl+R history search
-- **Carapace** shell completion bridges for zsh, fish, bash, and inshellisense
-- **Entire CLI** shell completion integration
-- **Worktrunk** shell integration for Zsh and Nushell
+### shell enhancements
+- **vi mode** in zsh with preserved Ctrl+R history search
+- **carapace** shell completion bridges for zsh, fish, bash, and inshellisense
+- **entire CLI** shell completion integration
+- **worktrunk** shell integration for zsh and nushell
 - **zoxide** smart directory navigation based on frecency (frequency + recency)
 - **fzf** fuzzy finder for files, directories, and command history
+- **ripgrep** blazingly fast text search (used by telescope live_grep)
+- **fd** modern file finder (used by telescope for better file search)
 
-### Tmux Configuration
-- **Custom prefix:** `C-a` instead of default `C-b`
-- **TPM (Tmux Plugin Manager)** automatically installed for plugin management
-- **Catppuccin theme** managed via TPM (Mocha variant)
-- **Workspace automation:** `tmux-workspace.sh` creates 5-window setup with Claude instances
+### tmux configuration
+- **custom prefix:** `C-a` instead of default `C-b`
+- **tpm (tmux plugin manager)** automatically installed for plugin management
+- **catppuccin theme** managed via tpm (mocha variant)
+- **workspace automation:** `tmux-workspace.sh` creates 5-window setup with claude instances
 
-### Git Integration
+### git integration
 - **SSH-based GitHub URLs** automatically
-- **Worktree aliases** for git worktree management
-- Custom `.gitignore` patterns
+- **worktree aliases** for git worktree management
+- custom `.gitignore` patterns
 
-### Development Setup
-- **Claude Code integration** with work and personal config functions
-- **Clojure development** via Emacs with paredit, cider, and clojure-mode
-- **Leiningen** with CIDER nREPL plugin
+### development setup
+- **claude code integration** with work and personal config functions
+- **clojure development** via emacs with paredit, cider, and clojure-mode
+- **leiningen** with CIDER nREPL plugin
 
 ## 🔄 Post-Install Steps
 
-### Worktrunk Shell Integration (Nushell)
+### worktrunk shell integration (nushell)
 
-After installation, enable Worktrunk shell integration in Nushell:
+After installation, enable worktrunk shell integration in nushell:
 
 ```bash
 wt config shell install nu
 ```
 
-This creates a static `wt.nu` file in Nushell's vendor-autoload directory. Re-run this command after updating Worktrunk.
+This creates a static `wt.nu` file in nushell's vendor-autoload directory. Re-run this command after updating worktrunk.
 
 ## 🔧 Updating
 
@@ -191,9 +230,9 @@ git pull
 cargo run --release
 ```
 
-### Update Catppuccin Tmux Plugin
+### update catppuccin tmux plugin
 
-To move to a newer Catppuccin version:
+To move to a newer catppuccin version:
 
 1. Edit `src/main.rs` and update `TMUX_PLUGIN_TAG` constant
 2. Remove existing plugin: `rm -rf ~/.config/tmux/plugins/catppuccin`
