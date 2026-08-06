@@ -59,3 +59,6 @@ eval "$(fzf --zsh)"
 # Qwen Code PATH block begin
 export PATH='/Users/buddhamagnet/.local/bin':$PATH
 # Qwen Code PATH block end
+
+# Added by Devin
+export PATH="/Users/buddhamagnet/.codeium/windsurf/bin:$PATH"
