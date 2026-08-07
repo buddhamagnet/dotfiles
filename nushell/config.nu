@@ -3,6 +3,5 @@
 # Source carapace completions
 source ($nu.cache-dir | path join "carapace.nu")
 
-# Zoxide (smarter cd) - inline initialization
-zoxide init nushell | save -f ~/.zoxide.nu
+# Source zoxide integration (file generated in env.nu)
 source ~/.zoxide.nu
