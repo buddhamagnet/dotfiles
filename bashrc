@@ -10,8 +10,11 @@ source <(carapace _carapace)
 # Worktrunk shell integration
 eval "$(wt config shell init bash)"
 
-# Zoxide (smarter cd)
-eval "$(zoxide init bash)"
+# Starship prompt
+eval "$(starship init bash)"
 
 # fzf (fuzzy finder)
 eval "$(fzf --bash)"
+
+# Zoxide (smarter cd)
+eval "$(zoxide init bash)"
