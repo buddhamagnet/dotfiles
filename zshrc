@@ -56,6 +56,9 @@ eval "$(zoxide init zsh)"
 # fzf (fuzzy finder)
 eval "$(fzf --zsh)"
 
+# Atuin (shell history sync)
+eval "$(atuin init zsh)"
+
 # Qwen Code PATH block begin
 export PATH='/Users/buddhamagnet/.local/bin':$PATH
 # Qwen Code PATH block end

@@ -25,6 +25,7 @@ const MANIFEST: &[(&str, &str)] = &[
     ("nushell/env.nu", ".config/nushell/env.nu"),
     ("nushell/config.nu", ".config/nushell/config.nu"),
     ("starship/starship.toml", ".config/starship.toml"),
+    ("atuin/config.toml", ".config/atuin/config.toml"),
     ("nvim", ".config/nvim")
 ];
 
@@ -116,6 +117,8 @@ fn main() {
         install_fzf();
         install_ripgrep();
         install_fd();
+        install_atuin();
+        install_atuin_setup();
         install_tpm();
         install_tpm_plugins();
     }
@@ -494,5 +497,130 @@ fn install_fd() {
         Ok(s) if s.success() => println!("fd installed successfully"),
         Ok(_) => eprintln!("Warning: brew install fd failed"),
         Err(e) => eprintln!("Warning: failed to run brew: {e}"),
+    }
+}
+
+/// Install atuin via Homebrew if not already installed.
+fn install_atuin() {
+    let check_status = Command::new("which").arg("atuin").status();
+
+    if let Ok(s) = check_status {
+        if s.success() {
+            println!("atuin already installed");
+            return;
+        }
+    }
+
+    println!("Installing atuin...");
+    let status = Command::new("brew")
+        .args(["install", "atuin"])
+        .status();
+
+    match status {
+        Ok(s) if s.success() => println!("atuin installed successfully"),
+        Ok(_) => eprintln!("Warning: brew install atuin failed"),
+        Err(e) => eprintln!("Warning: failed to run brew: {e}"),
+    }
+}
+
+/// Setup atuin: check registration, handle import/sync, generate Nushell integration.
+/// This function handles the post-install configuration for atuin.
+fn install_atuin_setup() {
+    // Verify atuin binary exists
+    let check_status = Command::new("which").arg("atuin").status();
+    if check_status.is_err() || !check_status.unwrap().success() {
+        eprintln!("Warning: atuin binary not found, skipping setup");
+        return;
+    }
+
+    let home = PathBuf::from(env::var("HOME").expect("$HOME is not set"));
+
+    // Generate Nushell integration file
+    // This must be done regardless of registration status
+    println!("Generating atuin Nushell integration...");
+    let nu_output = Command::new("sh")
+        .arg("-c")
+        .arg("atuin init nu")
+        .output();
+
+    match nu_output {
+        Ok(output) if output.status.success() => {
+            let atuin_nu_path = home.join(".atuin.nu");
+            if let Err(e) = fs::write(&atuin_nu_path, output.stdout) {
+                eprintln!("Warning: failed to write ~/.atuin.nu: {e}");
+            } else {
+                println!("Generated ~/.atuin.nu successfully");
+            }
+        }
+        Ok(_) => eprintln!("Warning: failed to generate Nushell integration"),
+        Err(e) => eprintln!("Warning: failed to run atuin init nu: {e}"),
+    }
+
+    // Check registration status
+    let status_check = Command::new("atuin")
+        .arg("status")
+        .stdout(std::process::Stdio::null())
+        .stderr(std::process::Stdio::null())
+        .status();
+
+    let is_registered = match status_check {
+        Ok(s) => s.success(),
+        Err(_) => false,
+    };
+
+    if !is_registered {
+        println!("\n┌─────────────────────────────────────────────────────────────┐");
+        println!("│ atuin Installation Complete - Registration Required         │");
+        println!("└─────────────────────────────────────────────────────────────┘");
+        println!("\natuin is installed but not yet registered for sync.");
+        println!("\nTo enable server sync, run these commands:\n");
+        println!("  atuin register -u <USERNAME> -e <EMAIL>");
+        println!("  atuin import auto");
+        println!("  atuin sync\n");
+        println!("Note: Registration requires creating a password.");
+        println!("Your shell history will start being captured immediately.");
+        println!("Sync will be enabled after registration.\n");
+        return;
+    }
+
+    // Already registered - check if we need to import history
+    println!("atuin is registered and configured for sync");
+
+    // Check if history database has entries
+    // If empty, this might be a new box that needs import
+    let db_path = home.join(".local/share/atuin/history.db");
+    let needs_import = if db_path.exists() {
+        // Check database size as proxy for "has data"
+        match fs::metadata(&db_path) {
+            Ok(metadata) => metadata.len() < 16384, // Empty SQLite DB is ~8KB
+            Err(_) => true,
+        }
+    } else {
+        true
+    };
+
+    if needs_import {
+        println!("Importing existing shell history...");
+        let import_status = Command::new("atuin")
+            .args(["import", "auto"])
+            .status();
+
+        match import_status {
+            Ok(s) if s.success() => println!("History imported successfully"),
+            Ok(_) => eprintln!("Warning: history import failed or no history found"),
+            Err(e) => eprintln!("Warning: failed to run atuin import: {e}"),
+        }
+    }
+
+    // Sync with server
+    println!("Syncing with atuin server...");
+    let sync_status = Command::new("atuin")
+        .arg("sync")
+        .status();
+
+    match sync_status {
+        Ok(s) if s.success() => println!("atuin sync completed successfully"),
+        Ok(_) => eprintln!("Warning: atuin sync failed"),
+        Err(e) => eprintln!("Warning: failed to run atuin sync: {e}"),
     }
 }

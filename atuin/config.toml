@@ -1,0 +1,38 @@
+# Atuin configuration
+# See: https://docs.atuin.sh/configuration/config/
+
+## Sync settings
+auto_sync = true
+sync_frequency = "5m"
+sync_address = "https://api.atuin.sh"
+
+## Search settings
+search_mode = "fuzzy"  # or "prefix", "fulltext", "skim"
+search_mode_shell_up_key_binding = "fuzzy"  # What mode to use when pressing up
+filter_mode_shell_up_key_binding = "directory"  # Filter to current directory when using up
+
+## UI settings
+show_preview = true
+max_preview_height = 4
+show_help = true
+exit_mode = "return-query"  # Return original query on exit
+
+## Behavior
+update_check = false  # Disable update notifications
+keymap_mode = "vim-normal"  # or "emacs", "auto"
+
+## History settings
+history_filter = [
+    "^secret",
+    "^password",
+    "AWS_SECRET",
+    "API_KEY"
+]
+
+## Inline display
+inline_height = 20
+invert = false
+
+## Stats
+common_prefix = ["sudo"]
+common_subcommands = ["git", "docker", "kubectl"]

@@ -18,3 +18,6 @@ eval "$(fzf --bash)"
 
 # Zoxide (smarter cd)
 eval "$(zoxide init bash)"
+
+# Atuin (shell history sync)
+eval "$(atuin init bash)"

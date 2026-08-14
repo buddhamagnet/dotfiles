@@ -13,3 +13,7 @@ carapace _carapace nushell | save --force ($nu.cache-dir | path join "carapace.n
 # Zoxide (smarter cd) initialization
 # This MUST be in env.nu (not config.nu) because zoxide modifies $env.config hooks
 zoxide init nushell | save -f ~/.zoxide.nu
+
+# Atuin (shell history sync) initialization
+# Generates static integration file sourced in config.nu
+atuin init nu | save -f ~/.atuin.nu

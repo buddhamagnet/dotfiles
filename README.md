@@ -30,6 +30,7 @@ The installer automatically installs these dependencies if not already present:
 | ![fzf](https://img.shields.io/badge/fzf-00ADD8?style=flat) | Command-line fuzzy finder | Latest | [GitHub](https://github.com/junegunn/fzf) |
 | ![ripgrep](https://img.shields.io/badge/ripgrep-3FB950?style=flat) | Fast line-oriented search tool | Latest | [GitHub](https://github.com/BurntSushi/ripgrep) |
 | ![fd](https://img.shields.io/badge/fd-FF6B6B?style=flat) | Modern find replacement | Latest | [GitHub](https://github.com/sharkdp/fd) |
+| ![atuin](https://img.shields.io/badge/atuin-00ADD8?style=flat) | Shell history sync & search | Latest | [Website](https://atuin.sh/) · [GitHub](https://github.com/atuinsh/atuin) · [Docs](https://docs.atuin.sh/) |
 | ![tpm](https://img.shields.io/badge/tpm-1BB91F?style=flat) | tmux plugin manager | v3.1.0 | [GitHub](https://github.com/tmux-plugins/tpm) |
 
 ### tpm plugins
@@ -189,6 +190,7 @@ The installer symlinks these files from the repository into your home directory:
 - **worktrunk** shell integration for zsh and nushell
 - **zoxide** smart directory navigation based on frecency (frequency + recency)
 - **fzf** fuzzy finder for files, directories, and command history
+- **atuin** magical shell history sync and fuzzy search with server backup (replaces Ctrl+R)
 - **ripgrep** blazingly fast text search (used by telescope live_grep)
 - **fd** modern file finder (used by telescope for better file search)
 
@@ -219,6 +221,31 @@ wt config shell install nu
 ```
 
 This creates a static `wt.nu` file in nushell's vendor-autoload directory. Re-run this command after updating worktrunk.
+
+### atuin server sync setup
+
+After installation, atuin is configured but requires one-time registration for server sync:
+
+```bash
+atuin register -u <USERNAME> -e <EMAIL>
+```
+
+This will prompt for a password. After registration:
+
+```bash
+atuin import auto  # Import existing shell history (run once)
+atuin sync         # Sync with server
+```
+
+**On subsequent machines:** The installer automatically detects registration and syncs history.
+
+**Key bindings:**
+- `Ctrl+R` - Search shell history (fuzzy search)
+- `Ctrl+R` then `Ctrl+R` - Cycle through filter modes
+- Up arrow - Search history filtered by current directory
+- `atuin search` - Manual history search
+
+**Configuration:** `~/.config/atuin/config.toml` (symlinked from repo)
 
 ## 🔧 Updating
 
