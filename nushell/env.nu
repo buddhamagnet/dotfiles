@@ -17,3 +17,6 @@ zoxide init nushell | save -f ~/.zoxide.nu
 # Atuin (shell history sync) initialization
 # Generates static integration file sourced in config.nu
 atuin init nu | save -f ~/.atuin.nu
+
+# opencode
+$env.PATH = ($env.PATH | prepend '/Users/buddhamagnet/.opencode/bin')

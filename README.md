@@ -31,6 +31,7 @@ The installer automatically installs these dependencies if not already present:
 | ![ripgrep](https://img.shields.io/badge/ripgrep-3FB950?style=flat) | Fast line-oriented search tool | Latest | [GitHub](https://github.com/BurntSushi/ripgrep) |
 | ![fd](https://img.shields.io/badge/fd-FF6B6B?style=flat) | Modern find replacement | Latest | [GitHub](https://github.com/sharkdp/fd) |
 | ![atuin](https://img.shields.io/badge/atuin-00ADD8?style=flat) | Shell history sync & search | Latest | [Website](https://atuin.sh/) · [GitHub](https://github.com/atuinsh/atuin) · [Docs](https://docs.atuin.sh/) |
+| ![opencode](https://img.shields.io/badge/opencode-000000?style=flat) | AI coding agent for the terminal | Latest | [Website](https://opencode.ai/) · [GitHub](https://github.com/anomalyco/opencode) |
 | ![tpm](https://img.shields.io/badge/tpm-1BB91F?style=flat) | tmux plugin manager | v3.1.0 | [GitHub](https://github.com/tmux-plugins/tpm) |
 
 ### tpm plugins
@@ -193,6 +194,7 @@ The installer symlinks these files from the repository into your home directory:
 - **atuin** magical shell history sync and fuzzy search with server backup (replaces Ctrl+R)
 - **ripgrep** blazingly fast text search (used by telescope live_grep)
 - **fd** modern file finder (used by telescope for better file search)
+- **opencode** AI coding agent for the terminal
 
 ### tmux configuration
 - **custom prefix:** `C-a` instead of default `C-b`

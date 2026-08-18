@@ -119,6 +119,7 @@ fn main() {
         install_fd();
         install_atuin();
         install_atuin_setup();
+        install_opencode();
         install_tpm();
         install_tpm_plugins();
     }
@@ -622,5 +623,29 @@ fn install_atuin_setup() {
         Ok(s) if s.success() => println!("atuin sync completed successfully"),
         Ok(_) => eprintln!("Warning: atuin sync failed"),
         Err(e) => eprintln!("Warning: failed to run atuin sync: {e}"),
+    }
+}
+
+/// Install opencode via the official installer script if not already installed.
+fn install_opencode() {
+    let check_status = Command::new("which").arg("opencode").status();
+
+    if let Ok(s) = check_status {
+        if s.success() {
+            println!("opencode already installed");
+            return;
+        }
+    }
+
+    println!("Installing opencode...");
+    let status = Command::new("sh")
+        .arg("-c")
+        .arg("curl -fsSL https://opencode.ai/install | bash")
+        .status();
+
+    match status {
+        Ok(s) if s.success() => println!("opencode installed successfully"),
+        Ok(_) => eprintln!("Warning: opencode install script failed"),
+        Err(e) => eprintln!("Warning: failed to run installer: {e}"),
     }
 }
