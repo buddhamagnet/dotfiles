@@ -65,3 +65,6 @@ export PATH='/Users/buddhamagnet/.local/bin':$PATH
 
 # Added by Devin
 export PATH="/Users/buddhamagnet/.codeium/windsurf/bin:$PATH"
+
+# opencode
+export PATH=/Users/buddhamagnet/.opencode/bin:$PATH
