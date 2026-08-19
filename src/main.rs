@@ -22,8 +22,8 @@ const MANIFEST: &[(&str, &str)] = &[
     (".lein/profiles.clj", ".lein/profiles.clj"),
     (".emacs.d", ".emacs.d"),
     ("ghostty/config", ".config/ghostty/config"),
-    ("nushell/env.nu", ".config/nushell/env.nu"),
-    ("nushell/config.nu", ".config/nushell/config.nu"),
+    ("nushell/env.nu", "Library/Application Support/nushell/env.nu"),
+    ("nushell/config.nu", "Library/Application Support/nushell/config.nu"),
     ("starship/starship.toml", ".config/starship.toml"),
     ("atuin/config.toml", ".config/atuin/config.toml"),
     ("nvim", ".config/nvim")
