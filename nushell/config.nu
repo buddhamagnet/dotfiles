@@ -8,3 +8,6 @@ source ~/.atuin.nu
 
 # Source zoxide integration (file generated in env.nu)
 source ~/.zoxide.nu
+
+# Set vi mode
+$env.config = ($env.config | upsert edit_mode vi)
