@@ -194,29 +194,26 @@ fn unique_backup_path(backup_dir: &Path, name: &std::ffi::OsStr) -> PathBuf {
 
 /// Install JetBrains Mono font via Homebrew if not already installed.
 fn install_jetbrains_mono() {
-    let home = env::var("HOME").expect("$HOME is not set");
-    let font_path = PathBuf::from(&home).join("Library/Fonts");
+    // Check if JetBrains Mono Nerd Font is already installed
+    let check_status = Command::new("brew")
+        .args(["list", "--cask", "font-jetbrains-mono-nerd-font"])
+        .status();
 
-    // Check if JetBrains Mono is already installed
-    if let Ok(entries) = fs::read_dir(&font_path) {
-        for entry in entries.flatten() {
-            if let Some(name) = entry.file_name().to_str() {
-                if name.to_lowercase().contains("jetbrains") {
-                    println!("JetBrains Mono already installed");
-                    return;
-                }
-            }
+    if let Ok(s) = check_status {
+        if s.success() {
+            println!("JetBrains Mono Nerd Font already installed");
+            return;
         }
     }
 
-    println!("Installing JetBrains Mono font...");
+    println!("Installing JetBrains Mono Nerd Font...");
     let status = Command::new("brew")
-        .args(["install", "--cask", "font-jetbrains-mono"])
+        .args(["install", "--cask", "font-jetbrains-mono-nerd-font"])
         .status();
 
     match status {
-        Ok(s) if s.success() => println!("JetBrains Mono installed successfully"),
-        Ok(_) => eprintln!("Warning: brew install font-jetbrains-mono failed"),
+        Ok(s) if s.success() => println!("JetBrains Mono Nerd Font installed successfully"),
+        Ok(_) => eprintln!("Warning: brew install font-jetbrains-mono-nerd-font failed"),
         Err(e) => eprintln!("Warning: failed to run brew: {e}"),
     }
 }
