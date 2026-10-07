@@ -4,6 +4,7 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # User configuration
 
 alias deadbranch="git fetch -p && git branch -vv | awk '/: gone]/{print \$1}' | xargs git branch -D"
+alias branchclean="git pull && git remote prune origin && deadbranch"
 alias decimate="~/tmux-workspace.sh"
 
 export NVM_DIR="$HOME/.nvm"
