@@ -12,6 +12,23 @@ return {
     end,
   },
   {
+  "nvim-treesitter/nvim-treesitter",
+  build = ":TSUpdate",
+  event = { "BufReadPost", "BufNewFile" },
+  config = function()
+    require("nvim-treesitter.config").setup({
+      ensure_installed = { "lua", "javascript", "rust" },
+      auto_install = true,
+      highlight = {
+        enable = true,
+      },
+      indent = {
+        enable = true,
+      },
+    })
+  end,
+  },
+  {
     "nvim-telescope/telescope.nvim",
     version = "*",
     dependencies = {
