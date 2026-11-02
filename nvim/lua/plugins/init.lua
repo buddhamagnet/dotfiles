@@ -70,4 +70,10 @@ return {
       vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
     end
   },
+  {
+    "jiaoshijie/undotree",
+    config = function()
+      vim.keymap.set("n", "<leader>u", require("undotree").toggle, { desc = "Toggle undotree" })
+    end
+  },
 }

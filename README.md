@@ -71,12 +71,16 @@ neovim uses [lazy.nvim](https://github.com/folke/lazy.nvim) for plugin managemen
 | **telescope** | fuzzy finder over lists (files, buffers, etc.) | [nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) |
 | **telescope-fzf-native** | native C sorter for telescope (performance) | [telescope-fzf-native.nvim](https://github.com/nvim-telescope/telescope-fzf-native.nvim) |
 | **plenary** | lua utility library (required by telescope) | [nvim-lua/plenary.nvim](https://github.com/nvim-lua/plenary.nvim) |
+| **undotree** | visualize and navigate undo history | [jiaoshijie/undotree](https://github.com/jiaoshijie/undotree) |
 
 **telescope keybindings:**
 - `<leader>ff` - Find files
 - `<leader>fg` - Live grep (search text in files)
 - `<leader>fb` - List buffers
 - `<leader>fh` - Search help tags
+
+**undotree keybindings:**
+- `<leader>u` - Toggle undotree panel
 
 **Managing plugins:**
 - View plugin status: `:Lazy`
