@@ -14,6 +14,10 @@ vim.opt.rtp:prepend(lazypath)
  
 require("lazy").setup("plugins")
 
+-- Set up key mappings.
+
+require("remap")
+
 -- Vim settings.
 
 vim.opt.number = true

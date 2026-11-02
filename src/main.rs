@@ -119,6 +119,7 @@ fn main() {
         install_fd();
         install_atuin();
         install_atuin_setup();
+        install_tree_sitter();
         install_opencode();
         install_tpm();
         install_tpm_plugins();
@@ -620,6 +621,29 @@ fn install_atuin_setup() {
         Ok(s) if s.success() => println!("atuin sync completed successfully"),
         Ok(_) => eprintln!("Warning: atuin sync failed"),
         Err(e) => eprintln!("Warning: failed to run atuin sync: {e}"),
+    }
+}
+
+/// Install tree-sitter CLI via Homebrew if not already installed.
+fn install_tree_sitter() {
+    let check_status = Command::new("which").arg("tree-sitter").status();
+
+    if let Ok(s) = check_status {
+        if s.success() {
+            println!("tree-sitter already installed");
+            return;
+        }
+    }
+
+    println!("Installing tree-sitter...");
+    let status = Command::new("brew")
+        .args(["install", "tree-sitter"])
+        .status();
+
+    match status {
+        Ok(s) if s.success() => println!("tree-sitter installed successfully"),
+        Ok(_) => eprintln!("Warning: brew install tree-sitter failed"),
+        Err(e) => eprintln!("Warning: failed to run brew: {e}"),
     }
 }
 

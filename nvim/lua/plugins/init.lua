@@ -9,18 +9,20 @@ return {
         flavour = "mocha", -- latte, frappe, macchiato, mocha, or auto
       })
       vim.cmd.colorscheme "catppuccin"
+      vim.api.nvim_set_hl(0, "Normal", { bg  = "none" })
+      vim.api.nvim_set_hl(0, "NormalFloat", { bg =  "none" })
     end,
   },
   {
-  "nvim-treesitter/nvim-treesitter",
-  build = ":TSUpdate",
-  event = { "BufReadPost", "BufNewFile" },
-  config = function()
-    require("nvim-treesitter.config").setup({
-      ensure_installed = { "lua", "javascript", "rust" },
-      auto_install = true,
-      highlight = {
-        enable = true,
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    event = { "BufReadPost", "BufNewFile" },
+    config = function()
+      require("nvim-treesitter.config").setup({
+        ensure_installed = { "help", "lua", "javascript", "typescript", "elixir", "rust", "clojure" },
+        auto_install = true,
+        highlight = {
+          enable = true,
       },
       indent = {
         enable = true,

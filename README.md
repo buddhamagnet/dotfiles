@@ -67,6 +67,7 @@ neovim uses [lazy.nvim](https://github.com/folke/lazy.nvim) for plugin managemen
 |--------|-------------|------------|
 | **lazy.nvim** | modern plugin manager with lazy loading | [folke/lazy.nvim](https://github.com/folke/lazy.nvim) |
 | **catppuccin** | soothing pastel theme for neovim (mocha variant) | [catppuccin/nvim](https://github.com/catppuccin/nvim) |
+| **nvim-treesitter** | syntax parsing and highlighting | [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) |
 | **telescope** | fuzzy finder over lists (files, buffers, etc.) | [nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) |
 | **telescope-fzf-native** | native C sorter for telescope (performance) | [telescope-fzf-native.nvim](https://github.com/nvim-telescope/telescope-fzf-native.nvim) |
 | **plenary** | lua utility library (required by telescope) | [nvim-lua/plenary.nvim](https://github.com/nvim-lua/plenary.nvim) |
@@ -112,9 +113,6 @@ These tools are referenced in configurations but require separate installation:
 | ![neovim](https://img.shields.io/badge/neovim-57A143?style=flat&logo=neovim&logoColor=white) | hyperextensible vim-based text editor | Latest | [Website](https://neovim.io/) · [GitHub](https://github.com/neovim/neovim) |
 | ![emacs](https://img.shields.io/badge/emacs-7F5AB6?style=flat&logo=gnu-emacs&logoColor=white) | extensible text editor (clojure-focused) | Latest | [Website](https://www.gnu.org/software/emacs/) · [GNU](https://savannah.gnu.org/projects/emacs) |
 | ![leiningen](https://img.shields.io/badge/leiningen-5881D8?style=flat&logo=clojure&logoColor=white) | clojure build automation tool | CIDER nREPL 0.62.0 | [Website](https://leiningen.org/) · [GitHub](https://github.com/technomancy/leiningen) |
-| ![mysql](https://img.shields.io/badge/mysql-4479A1?style=flat&logo=mysql&logoColor=white) | relational database | 8.3.0 | [Website](https://www.mysql.com/) · [Dev](https://dev.mysql.com/) |
-| ![gdb](https://img.shields.io/badge/gdb-A42E2B?style=flat) | GNU debugger | Latest | [Website](https://www.sourceware.org/gdb/) |
-| ![ghci](https://img.shields.io/badge/ghci-5D4F85?style=flat&logo=haskell&logoColor=white) | haskell REPL | Latest | [Website](https://www.haskell.org/ghc/) |
 | **claude code** | AI-powered coding assistant | Latest | [Website](https://claude.ai/code) |
 
 ## 📋 Installation
@@ -165,8 +163,6 @@ The installer symlinks these files from the repository into your home directory:
 | `zshrc` | `~/.zshrc` | zsh configuration with starship prompt, carapace completions, vi mode, and custom functions |
 | `gitconfig` | `~/.gitconfig` | git configuration with SSH GitHub URLs and worktree aliases |
 | `gitignore` | `~/.gitignore` | global git ignore patterns |
-| `gdbinit` | `~/.gdbinit` | GNU debugger configuration (Intel disassembly) |
-| `ghci` | `~/.ghci` | haskell REPL configuration (lambda prompt) |
 | `tmux/tmux.conf` | `~/.tmux.conf` | tmux configuration with catppuccin theme, custom prefix (C-a) |
 | `tmux/tmux-workspace.sh` | `~/tmux-workspace.sh` | automated tmux workspace setup script |
 | `.lein/profiles.clj` | `~/.lein/profiles.clj` | leiningen configuration with CIDER plugin |
