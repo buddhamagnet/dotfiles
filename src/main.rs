@@ -122,7 +122,6 @@ fn main() {
         install_tree_sitter();
         install_dnsglobe();
         install_gitlogue();
-        install_visidata();
         install_kondo();
         install_opencode();
         install_tpm();
@@ -693,29 +692,6 @@ fn install_gitlogue() {
     match status {
         Ok(s) if s.success() => println!("gitlogue installed successfully"),
         Ok(_) => eprintln!("Warning: brew install gitlogue failed"),
-        Err(e) => eprintln!("Warning: failed to run brew: {e}"),
-    }
-}
-
-/// Install VisiData via Homebrew if not already installed.
-fn install_visidata() {
-    let check_status = Command::new("which").arg("vd").status();
-
-    if let Ok(s) = check_status {
-        if s.success() {
-            println!("VisiData already installed");
-            return;
-        }
-    }
-
-    println!("Installing VisiData...");
-    let status = Command::new("brew")
-        .args(["install", "visidata"])
-        .status();
-
-    match status {
-        Ok(s) if s.success() => println!("VisiData installed successfully"),
-        Ok(_) => eprintln!("Warning: brew install visidata failed"),
         Err(e) => eprintln!("Warning: failed to run brew: {e}"),
     }
 }

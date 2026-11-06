@@ -33,7 +33,6 @@ The installer automatically installs these dependencies if not already present:
 | ![atuin](https://img.shields.io/badge/atuin-00ADD8?style=flat) | Shell history sync & search | Latest | [Website](https://atuin.sh/) · [GitHub](https://github.com/atuinsh/atuin) · [Docs](https://docs.atuin.sh/) |
 | ![dnsglobe](https://img.shields.io/badge/dnsglobe-0EA5E9?style=flat) | Global DNS propagation checker | Latest | [GitHub](https://github.com/514-labs/dnsglobe) |
 | ![gitlogue](https://img.shields.io/badge/gitlogue-8B5CF6?style=flat) | Cinematic Git commit replay | Latest | [GitHub](https://github.com/unhappychoice/gitlogue) |
-| ![visidata](https://img.shields.io/badge/visidata-F59E0B?style=flat) | Interactive multitool for tabular data | Latest | [Website](https://www.visidata.org/) · [GitHub](https://github.com/saulpw/visidata) |
 | ![kondo](https://img.shields.io/badge/kondo-10B981?style=flat) | Project artifact cleaner | Latest | [GitHub](https://github.com/tbillington/kondo) |
 | ![opencode](https://img.shields.io/badge/opencode-000000?style=flat) | AI coding agent for the terminal | Latest | [Website](https://opencode.ai/) · [GitHub](https://github.com/anomalyco/opencode) |
 | ![tpm](https://img.shields.io/badge/tpm-1BB91F?style=flat) | tmux plugin manager | v3.1.0 | [GitHub](https://github.com/tmux-plugins/tpm) |
@@ -204,7 +203,6 @@ The installer symlinks these files from the repository into your home directory:
 - **fd** modern file finder (used by telescope for better file search)
 - **dnsglobe** global DNS propagation checker for debugging DNS changes
 - **gitlogue** cinematic Git commit replay tool with syntax highlighting and animations
-- **visidata** interactive multitool for exploring and manipulating tabular data (CSV, JSON, etc.)
 - **kondo** cleans build artifacts and dependencies (node_modules, target, build dirs) from projects
 - **opencode** AI coding agent for the terminal
 
