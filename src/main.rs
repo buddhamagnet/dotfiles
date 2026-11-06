@@ -120,6 +120,10 @@ fn main() {
         install_atuin();
         install_atuin_setup();
         install_tree_sitter();
+        install_dnsglobe();
+        install_gitlogue();
+        install_visidata();
+        install_kondo();
         install_opencode();
         install_tpm();
         install_tpm_plugins();
@@ -643,6 +647,98 @@ fn install_tree_sitter() {
     match status {
         Ok(s) if s.success() => println!("tree-sitter installed successfully"),
         Ok(_) => eprintln!("Warning: brew install tree-sitter failed"),
+        Err(e) => eprintln!("Warning: failed to run brew: {e}"),
+    }
+}
+
+/// Install dnsglobe via Homebrew if not already installed.
+fn install_dnsglobe() {
+    let check_status = Command::new("which").arg("dnsglobe").status();
+
+    if let Ok(s) = check_status {
+        if s.success() {
+            println!("dnsglobe already installed");
+            return;
+        }
+    }
+
+    println!("Installing dnsglobe...");
+    let status = Command::new("brew")
+        .args(["install", "514-labs/tap/dnsglobe"])
+        .status();
+
+    match status {
+        Ok(s) if s.success() => println!("dnsglobe installed successfully"),
+        Ok(_) => eprintln!("Warning: brew install 514-labs/tap/dnsglobe failed"),
+        Err(e) => eprintln!("Warning: failed to run brew: {e}"),
+    }
+}
+
+/// Install gitlogue via Homebrew if not already installed.
+fn install_gitlogue() {
+    let check_status = Command::new("which").arg("gitlogue").status();
+
+    if let Ok(s) = check_status {
+        if s.success() {
+            println!("gitlogue already installed");
+            return;
+        }
+    }
+
+    println!("Installing gitlogue...");
+    let status = Command::new("brew")
+        .args(["install", "gitlogue"])
+        .status();
+
+    match status {
+        Ok(s) if s.success() => println!("gitlogue installed successfully"),
+        Ok(_) => eprintln!("Warning: brew install gitlogue failed"),
+        Err(e) => eprintln!("Warning: failed to run brew: {e}"),
+    }
+}
+
+/// Install VisiData via Homebrew if not already installed.
+fn install_visidata() {
+    let check_status = Command::new("which").arg("vd").status();
+
+    if let Ok(s) = check_status {
+        if s.success() {
+            println!("VisiData already installed");
+            return;
+        }
+    }
+
+    println!("Installing VisiData...");
+    let status = Command::new("brew")
+        .args(["install", "visidata"])
+        .status();
+
+    match status {
+        Ok(s) if s.success() => println!("VisiData installed successfully"),
+        Ok(_) => eprintln!("Warning: brew install visidata failed"),
+        Err(e) => eprintln!("Warning: failed to run brew: {e}"),
+    }
+}
+
+/// Install kondo via Homebrew if not already installed.
+fn install_kondo() {
+    let check_status = Command::new("which").arg("kondo").status();
+
+    if let Ok(s) = check_status {
+        if s.success() {
+            println!("kondo already installed");
+            return;
+        }
+    }
+
+    println!("Installing kondo...");
+    let status = Command::new("brew")
+        .args(["install", "kondo"])
+        .status();
+
+    match status {
+        Ok(s) if s.success() => println!("kondo installed successfully"),
+        Ok(_) => eprintln!("Warning: brew install kondo failed"),
         Err(e) => eprintln!("Warning: failed to run brew: {e}"),
     }
 }
