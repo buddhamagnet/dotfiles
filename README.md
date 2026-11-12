@@ -76,6 +76,7 @@ neovim uses [lazy.nvim](https://github.com/folke/lazy.nvim) for plugin managemen
 | **plenary** | lua utility library (required by telescope) | [nvim-lua/plenary.nvim](https://github.com/nvim-lua/plenary.nvim) |
 | **undotree** | visualize and navigate undo history | [jiaoshijie/undotree](https://github.com/jiaoshijie/undotree) |
 | **vim-fugitive** | comprehensive git integration | [tpope/vim-fugitive](https://github.com/tpope/vim-fugitive) |
+| **conjure** | evaluate code in a live REPL from the buffer (clojure, fennel, lua, python) | [Olical/conjure](https://github.com/Olical/conjure) |
 
 **telescope keybindings:**
 - `<leader>ff` - Find files
@@ -88,6 +89,39 @@ neovim uses [lazy.nvim](https://github.com/folke/lazy.nvim) for plugin managemen
 
 **vim-fugitive keybindings:**
 - `<leader>gs` - Open Git status window
+
+**conjure keybindings:**
+
+Conjure mappings start with `<localleader>`. This config sets it to space, the same as `<leader>`.
+Clojure, fennel, lua and python files load the plugin. Needs Neovim 0.10 or newer.
+
+- `<localleader>ee` - Evaluate the form under the cursor
+- `<localleader>er` - Evaluate the root (top level) form
+- `<localleader>ew` - Evaluate the word under the cursor
+- `<localleader>eb` - Evaluate the whole buffer
+- `<localleader>ef` - Evaluate the file from disk
+- `<localleader>ep` - Run the previous evaluation again
+- `<localleader>ece` - Evaluate the form and insert the result as a comment
+- `E` - Evaluate the visual selection, or `E{motion}` in normal mode
+- `<localleader>lg` - Toggle the log buffer
+- `<localleader>ls` / `<localleader>lv` - Open the log in a split / vertical split
+- `<localleader>lq` - Close visible log windows
+- `<localleader>lr` - Soft reset the log
+- `K` - Look up docs for the word under the cursor
+- `gd` - Go to definition
+
+Run `:ConjureSchool` for an interactive tutorial. Run `:help conjure` for the full docs.
+
+**conjure quickstart:**
+
+Pick the language you want. Lua and fennel need no extra tools.
+
+1. Lua. Open a `.lua` file and type `print(1 + 2)`. Put the cursor on that line and press `<space>ee`. The result shows in the log HUD. Press `<space>eb` to run the whole buffer. Local variables persist between runs. Press `<space>rr` to reset them.
+2. Fennel. Open a `.fnl` file and type `(+ 1 2)`. Press `<space>ee`. It runs inside Neovim, so there is nothing to start.
+3. Python. Needs `python3` on your PATH. Open a `.py` file. The REPL starts by itself. You can also press `<space>cs` to start it and `<space>cS` to stop it. Press `<space>ee` to evaluate. In the REPL `__name__` is `__repl__`, so guard your entry point with `if __name__ in {"__main__", "__repl__"}:`.
+4. Clojure. Install Babashka with `brew install borkdude/brew/babashka`. Open a `.clj` file and Conjure starts a Babashka nREPL and connects to it. For a JVM REPL, start `lein repl` in the project first. The `.lein/profiles.clj` in this repo already has the CIDER plugin. Then open Neovim in the same directory. If it does not connect, run `:ConjureConnect` or press `<space>cf`. Press `<space>ee` for the current form and `<space>er` for the root form.
+
+Conjure uses tree-sitter to find forms in lua and python. Run `:TSInstall lua python` if `<space>ee` does nothing in those files.
 
 **Managing plugins:**
 - View plugin status: `:Lazy`

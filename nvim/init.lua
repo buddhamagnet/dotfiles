@@ -1,5 +1,6 @@
 --
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 -- Bootstrap lazy.nvim
 --

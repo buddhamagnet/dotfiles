@@ -82,4 +82,9 @@ return {
       vim.keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = "Git status" })
     end
   },
+  {
+    "Olical/conjure",
+    ft = { "clojure", "fennel", "lua", "python" },
+    lazy = true,
+  },
 }
